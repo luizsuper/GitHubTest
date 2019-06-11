@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:height="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <p>
+        <script src="jquery-3.3.1.js"></script>
+        <script src="jquery-3.3.1.min.js"></script>
+    </p>
+</head>
+<body onload="showQues()">
+登陆到第一个网址输入你的学号，点击我的空间，大学生创业创新下面的课程互动按钮，点击进行中的考试，期末考试，进入考试页面<br>
+单机右键，查看页面 源代码。按住 ctrl+a 全选，ctrl+c 粘贴。将内容复制到这个文本框里<br>
+单机生成答案按钮，就会自动生成每道题的答案，只需要照着选择，单机提交即可。有个别题题库中没有答案，会用"?"占位符表示，请自行输入答案。<br>
+<div style="font-size: 30px">
+    http://lc.usth.net.cn/G2S/ShowSystem/Index.aspx<br>
+</div>
+<div id="2" style="font-size: 30px;color: deeppink"></div>
+<br>
+将考试网站源代码粘在这里<br>
+(文本框里为实例代码,请删除并粘贴自己的代码，！！！！退出考试之后重新进入，需重新粘贴源码，否则顺序会错误)<br>
+crtl+a 全选，之后删除
+<br>
+<textarea id="exam_context" cols="100" rows="20">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	大学生创新创业导论-->网络考试-->答题模式
+</title>
+<meta http-equiv=X-UA-Compatible content=IE=EmulateIE7>
+   <script src="/G2S/JS/modalwindow/dhtmlwindow.js" type="text/javascript"></script>
+
+
+
+    <script src="/G2S/JS/common.js" type="text/javascript"></script>
+
+    <script src="/G2S/JS/DomHelper.js" type="text/javascript"></script>
+
+    <script src="/G2S/JS/XmlHttpPool.js" type="text/javascript"></script>
+
+    <link href="/G2S/css/G2S.css" rel="stylesheet" type="text/css" />
+    <link href="/G2S/css/General.css" rel="stylesheet" type="text/css" />
+    <link href="/G2S/css/GridView.css" rel="stylesheet" type="text/css" />
+    <link href="/G2S/css/Menu.css" rel="stylesheet" type="text/css" />
+    <link href="/G2S/css/modalwindow/modal.css" rel="stylesheet" type="text/css" />
+    <link href="/G2S/css/modalwindow/dhtmlwindow.css" rel="stylesheet"
+          type="text/css" />
+    <link href="/G2S/css/modalwindow/combobox.css" rel="stylesheet"
+          type="text/css" />
+</head>
+<body>
+    <div id="ide" style="position:fixed;top:45px; z-index:999; ">
+         <div id="fize1" style="float:left;font-size:14px;width:220px;height:30px; display:none;background:#C6E2FF;">
+                <table><tr><td><label style="line-height:24px;font-size:14px">字体设置：</label></td><td>
+                <input type="button" value="大" style="width:27px;height:23px;background:#87CEFF;border:1px solid #c2e1ef;" onclick="fize(3)" />
+                <input type="button" value="中" style="width:27px;height:23px;background:#87CEFF;border:1px solid #c2e1ef;" onclick="fize(2)" />
+                <input type="button" value="小" style="width:27px;height:23px;background:#87CEFF;border:1px solid #c2e1ef;" onclick="fize(1)" /></td><td>
+                <select id="Select1" style="width:43px;height:24px;" onchange="fize(this.id)">
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                </td></tr></table>
+            </div>
+        <div style="margin-top:5px;margin-right:3px;float:left"><a href="javascript:show()"><img alt="" id="img1" src="../../images/right-b.png" /></a></div>
+       </div><!--周锡喻/2014-12-9-->
+    <form name="form1" method="post" action="Examing.aspx?ID=3386" id="form1">
+<div>
+<input type="hidden" name="UserVisitKey" id="UserVisitKey" value="8" />
+<input type="hidden" name="UserVisitPostUrl" id="UserVisitPostUrl" value="/G2S/StatHandler.ashx" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzY5MDEyMDA0D2QWAgIDD2QWCgIDD2QWDGYPDxYCHgRUZXh0BQzmnJ/mnKvogIPor5VkZAIBD2QWCGYPDxYEHwAFDea1i+ivleWxguasoToeB1Zpc2libGVnZGQCAQ8PFgQfAAUG5Yid57qnHwFnZGQCAg8PFgIfAAUDMTAwZGQCAw8PFgIfAAUYIC8g5rWL6K+V5pe26ZW/OjYw5YiG6ZKfZGQCAg8PFgIfAAVX5aeT5ZCNOuW8oOiQjCZuYnNwO+WtpuWPtzoyMDE3MDI1MDIxJm5ic3A754+t57qnOuiQpemUgDE3LTLnj60mbmJzcDvlrabpmaI6566h55CG5a2m6ZmiZGQCAw9kFgYCAQ8WAh4Fc3R5bGUFD2Rpc3BsYXk6aW5saW5lOxYEZg8PFgIfAAUBOGRkAgEPDxYCHwAFAjUwZGQCAw8PFgIfAAUXIOW3sueUqOaXtumXtDogMjE6NTE6MzZkZAIFDw8WAh8ABRcgLyDliankvZnml7bpl7Q6MDo1NjowMGRkAgQPDxYCHwFoZBYCZg8PFgIfAAUBMGRkAgUPDxYCHwFoZGQCBQ8WAh4FdmFsdWUFBuWFs+mXrWQCBg8WAh8DBQbnu4jmraJkAgcPFgIfAwUG5pqC5a2YZAIIDxYCHwMFBuaPkOS6pGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFGkRvSG9tZXdvcmsxJGNoa0lzU2VuZFNjb3JlcLdE9+COCb1fFx8ciHzoqhwraQY=" />
+</div>
+
+
+<script src="/G2S/js/XmlHttpPool.js" type="text/javascript"></script>
+<script src="/G2S/js/SaveUserVisitTime.js" type="text/javascript"></script>
+    <input name="hidExamID" type="hidden" id="hidExamID" value="3386" />
+    <input name="hidWebID" type="hidden" id="hidWebID" value="-1" />
+    <input name="hLoginDataTime" type="hidden" id="hLoginDataTime" value="-8586422494058297158" />
+    <div style="width: 980px; margin: 0 auto; overflow: hidden;">
+
+
+<script type="text/javascript">
+var apppath = '/G2S';
+</script>
+
+<script src="/G2S/JS/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="/G2S/JS/DoHomework.js" type="text/javascript"></script>
+
+<script src="/G2S/JS/FloatDiv.js" type="text/javascript"></script>
+
+<script src="/G2S/JS/UserData.js" type="text/javascript"></script>
+
+<div id="testheader" class="PL10" style="line-height: 30px; border: solid 1px #f16911;
+    position: absolute; display: none; top: 10px; overflow: hidden; width: 968px;
+    background: #FAF2D2;">
+    <div id="divHeaderDo">
+    </div>
+    <div class="AligntoLeft Width550">
+        <div>
+            <span id="DoHomework1_lblTitle">期末考试</span>
+            <span id="DoHomework1_spanPaperSummeryInfo">
+                <label>
+                    (<span id="DoHomework1_lblLevelTitle">测试层次:</span></label>
+                <span id="DoHomework1_lblLevel" class="TextColorDark">初级</span>
+                <label>
+                    总分:</label>
+                <span id="DoHomework1_lblTotalScore" class="TextColorDark">100</span>
+                <span id="DoHomework1_lblTestTime" class="TextColorDark"> / 测试时长:60分钟</span>)</span>
+        </div>
+        <div>
+            <span id="DoHomework1_lblStudent" class="TextColorDark">姓名:xx&nbsp;学号:20170xxxxxx&nbsp;班级:xxxxx&nbsp;学院:xxxxx</span>
+        </div>
+    </div>
+    <div class="AligntoRight Width400">
+        <div id="DoHomework1_palDo" class="AligntoRight TextColorDark PR10">
+
+            <span id="DoHomework1_spnFinishStatus" style="display:inline;">
+                已完成:<span id="DoHomework1_lblFinishedCount" style="color: #f16911;">8</span><span class="TextColorGray">(<span id="DoHomework1_lblTotalCount">50</span>)</span></span>
+            <span id="DoHomework1_lblUsedTime"> 已用时间: 21:51:36</span>
+            <span id="DoHomework1_lblRemainTime"> / 剩余时间:0:56:00</span>
+
+</div>
+
+
+    </div>
+</div>
+<input name="DoHomework1$hidStudentAnswer" type="hidden" id="DoHomework1_hidStudentAnswer" />
+<div class="Width980 HideOverflow">
+    <div id="DoHomework1_Panel1" style="margin-top: 80px; overflow: hidden;">
+
+    <table class="Width980 " cellpadding="0" cellspacing="0"><tr><td class="BottomLine Width10">&nbsp;</td><td onclick="Homework.SelectQuestionByPart(this);" id="divPartIndex_2634" class="PartStand">分组1</td><td class="BottomLine">&nbsp;</td></tr></table><div id="divPartContent_2634" class="DisplayNone Width960  HideOverflow ClearBoth" style="margin:10px;"><div class="Pct100"><div id="divQuestionIndexContainer_2634" class="Pct100" style="margin:10px;"><div class="AligntoLeft Width250 TXTOverEllipsis">分组1<label class="TextColorGray" style="font-weight:normal;">(100分)</label></div><div class="AligntoRight Width700 MR10"><div id="divQIC_2634" class="AligntoRight" style="width:700px;"><input type="hidden" id="hidQuestionIndex_0" value="2634_268247" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268247_0" onclick="Homework.SelectQuestion(0)" class="IndexFinished">题1</div><input type="hidden" id="hidQuestionIndex_1" value="2634_267995" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267995_1" onclick="Homework.SelectQuestion(1)" class="IndexNonFinished">题2</div><input type="hidden" id="hidQuestionIndex_2" value="2634_268113" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268113_2" onclick="Homework.SelectQuestion(2)" class="IndexNonFinished">题3</div><input type="hidden" id="hidQuestionIndex_3" value="2634_268246" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268246_3" onclick="Homework.SelectQuestion(3)" class="IndexNonFinished">题4</div><input type="hidden" id="hidQuestionIndex_4" value="2634_268228" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268228_4" onclick="Homework.SelectQuestion(4)" class="IndexNonFinished">题5</div><input type="hidden" id="hidQuestionIndex_5" value="2634_268086" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268086_5" onclick="Homework.SelectQuestion(5)" class="IndexNonFinished">题6</div><input type="hidden" id="hidQuestionIndex_6" value="2634_267940" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267940_6" onclick="Homework.SelectQuestion(6)" class="IndexFinished">题7</div><input type="hidden" id="hidQuestionIndex_7" value="2634_268317" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268317_7" onclick="Homework.SelectQuestion(7)" class="IndexNonFinished">题8</div><input type="hidden" id="hidQuestionIndex_8" value="2634_267997" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267997_8" onclick="Homework.SelectQuestion(8)" class="IndexNonFinished">题9</div><input type="hidden" id="hidQuestionIndex_9" value="2634_268184" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268184_9" onclick="Homework.SelectQuestion(9)" class="IndexFinished">题10</div><input type="hidden" id="hidQuestionIndex_10" value="2634_268385" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268385_10" onclick="Homework.SelectQuestion(10)" class="IndexNonFinished">题11</div><input type="hidden" id="hidQuestionIndex_11" value="2634_268042" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268042_11" onclick="Homework.SelectQuestion(11)" class="IndexNonFinished">题12</div><input type="hidden" id="hidQuestionIndex_12" value="2634_268115" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268115_12" onclick="Homework.SelectQuestion(12)" class="IndexNonFinished">题13</div><input type="hidden" id="hidQuestionIndex_13" value="2634_268084" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268084_13" onclick="Homework.SelectQuestion(13)" class="IndexNonFinished">题14</div><input type="hidden" id="hidQuestionIndex_14" value="2634_267944" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267944_14" onclick="Homework.SelectQuestion(14)" class="IndexFinished">题15</div><input type="hidden" id="hidQuestionIndex_15" value="2634_268365" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268365_15" onclick="Homework.SelectQuestion(15)" class="IndexNonFinished">题16</div><input type="hidden" id="hidQuestionIndex_16" value="2634_268193" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268193_16" onclick="Homework.SelectQuestion(16)" class="IndexNonFinished">题17</div><input type="hidden" id="hidQuestionIndex_17" value="2634_267855" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267855_17" onclick="Homework.SelectQuestion(17)" class="IndexNonFinished">题18</div><input type="hidden" id="hidQuestionIndex_18" value="2634_268120" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268120_18" onclick="Homework.SelectQuestion(18)" class="IndexNonFinished">题19</div><input type="hidden" id="hidQuestionIndex_19" value="2634_268148" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268148_19" onclick="Homework.SelectQuestion(19)" class="IndexNonFinished">题20</div><input type="hidden" id="hidQuestionIndex_20" value="2634_268214" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268214_20" onclick="Homework.SelectQuestion(20)" class="IndexNonFinished">题21</div><input type="hidden" id="hidQuestionIndex_21" value="2634_267864" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267864_21" onclick="Homework.SelectQuestion(21)" class="IndexNonFinished">题22</div><input type="hidden" id="hidQuestionIndex_22" value="2634_268196" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268196_22" onclick="Homework.SelectQuestion(22)" class="IndexFinished">题23</div><input type="hidden" id="hidQuestionIndex_23" value="2634_268383" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268383_23" onclick="Homework.SelectQuestion(23)" class="IndexNonFinished">题24</div><input type="hidden" id="hidQuestionIndex_24" value="2634_268203" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268203_24" onclick="Homework.SelectQuestion(24)" class="IndexNonFinished">题25</div><input type="hidden" id="hidQuestionIndex_25" value="2634_268180" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268180_25" onclick="Homework.SelectQuestion(25)" class="IndexFinished">题26</div><input type="hidden" id="hidQuestionIndex_26" value="2634_268053" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268053_26" onclick="Homework.SelectQuestion(26)" class="IndexNonFinished">题27</div><input type="hidden" id="hidQuestionIndex_27" value="2634_268252" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268252_27" onclick="Homework.SelectQuestion(27)" class="IndexNonFinished">题28</div><input type="hidden" id="hidQuestionIndex_28" value="2634_267911" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267911_28" onclick="Homework.SelectQuestion(28)" class="IndexNonFinished">题29</div><input type="hidden" id="hidQuestionIndex_29" value="2634_267880" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267880_29" onclick="Homework.SelectQuestion(29)" class="IndexNonFinished">题30</div><input type="hidden" id="hidQuestionIndex_30" value="2634_268198" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268198_30" onclick="Homework.SelectQuestion(30)" class="IndexNonFinished">题31</div><input type="hidden" id="hidQuestionIndex_31" value="2634_267965" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267965_31" onclick="Homework.SelectQuestion(31)" class="IndexNonFinished">题32</div><input type="hidden" id="hidQuestionIndex_32" value="2634_268116" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268116_32" onclick="Homework.SelectQuestion(32)" class="IndexFinished">题33</div><input type="hidden" id="hidQuestionIndex_33" value="2634_267850" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267850_33" onclick="Homework.SelectQuestion(33)" class="IndexNonFinished">题34</div><input type="hidden" id="hidQuestionIndex_34" value="2634_267863" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267863_34" onclick="Homework.SelectQuestion(34)" class="IndexNonFinished">题35</div><input type="hidden" id="hidQuestionIndex_35" value="2634_267874" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267874_35" onclick="Homework.SelectQuestion(35)" class="IndexNonFinished">题36</div><input type="hidden" id="hidQuestionIndex_36" value="2634_267878" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267878_36" onclick="Homework.SelectQuestion(36)" class="IndexNonFinished">题37</div><input type="hidden" id="hidQuestionIndex_37" value="2634_268302" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268302_37" onclick="Homework.SelectQuestion(37)" class="IndexFinished">题38</div><input type="hidden" id="hidQuestionIndex_38" value="2634_267889" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267889_38" onclick="Homework.SelectQuestion(38)" class="IndexNonFinished">题39</div><input type="hidden" id="hidQuestionIndex_39" value="2634_267938" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267938_39" onclick="Homework.SelectQuestion(39)" class="IndexNonFinished">题40</div><input type="hidden" id="hidQuestionIndex_40" value="2634_268182" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268182_40" onclick="Homework.SelectQuestion(40)" class="IndexNonFinished">题41</div><input type="hidden" id="hidQuestionIndex_41" value="2634_268242" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268242_41" onclick="Homework.SelectQuestion(41)" class="IndexNonFinished">题42</div><input type="hidden" id="hidQuestionIndex_42" value="2634_268188" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268188_42" onclick="Homework.SelectQuestion(42)" class="IndexNonFinished">题43</div><input type="hidden" id="hidQuestionIndex_43" value="2634_268213" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268213_43" onclick="Homework.SelectQuestion(43)" class="IndexNonFinished">题44</div><input type="hidden" id="hidQuestionIndex_44" value="2634_268264" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268264_44" onclick="Homework.SelectQuestion(44)" class="IndexNonFinished">题45</div><input type="hidden" id="hidQuestionIndex_45" value="2634_268216" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268216_45" onclick="Homework.SelectQuestion(45)" class="IndexNonFinished">题46</div><input type="hidden" id="hidQuestionIndex_46" value="2634_267893" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_267893_46" onclick="Homework.SelectQuestion(46)" class="IndexNonFinished">题47</div><input type="hidden" id="hidQuestionIndex_47" value="2634_268233" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268233_47" onclick="Homework.SelectQuestion(47)" class="IndexNonFinished">题48</div><input type="hidden" id="hidQuestionIndex_48" value="2634_268306" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268306_48" onclick="Homework.SelectQuestion(48)" class="IndexNonFinished">题49</div><input type="hidden" id="hidQuestionIndex_49" value="2634_268332" name="hidQuestionIndex" /><div id="divQuestionIndexItem_2634_268332_49" onclick="Homework.SelectQuestion(49)" class="IndexNonFinished">题50</div></div></div></div><div id="divQuestionContainer_268247" class="DisplayNone"><input type="hidden" id="hidQuestionType_268247" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">1. 创业风险来源信息和信任缺口关键要素（  ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268247_1889251" value="1889251" name="chkChoiceItem_268247" type="checkbox"   /><label for="chkChoiceItem_268247_1889251">A.技术专家</label></div><div class="LH25"><input id="chkChoiceItem_268247_1889252" value="1889252" name="chkChoiceItem_268247" type="checkbox"   /><label for="chkChoiceItem_268247_1889252">B.管理者（投资者）</label></div><div class="LH25"><input id="chkChoiceItem_268247_1889253" value="1889253" name="chkChoiceItem_268247" type="checkbox"  checked="checked" /><label for="chkChoiceItem_268247_1889253">C.会计人员</label></div><div class="LH25"><input id="chkChoiceItem_268247_1889254" value="1889254" name="chkChoiceItem_268247" type="checkbox"   /><label for="chkChoiceItem_268247_1889254">D.市场调研</label></div></div><div id="divQuestionContainer_267995" class="DisplayNone"><input type="hidden" id="hidQuestionType_267995" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">2. 初创业公司要有一个差不多的办公室<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267995_1888461" value="1888461" name="chkChoiceItem_267995" type="radio"   /><label for="chkChoiceItem_267995_1888461">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_267995_1888462" value="1888462" name="chkChoiceItem_267995" type="radio"   /><label for="chkChoiceItem_267995_1888462">B.错误</label></div></div><div id="divQuestionContainer_268113" class="DisplayNone"><input type="hidden" id="hidQuestionType_268113" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">3. 项目的总体资金成本用( )来表示。  <label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268113_1888853" value="1888853" name="chkChoiceItem_268113" type="radio"   /><label for="chkChoiceItem_268113_1888853">A.优先股资金成本 </label></div><div class="LH25"><input id="chkChoiceItem_268113_1888854" value="1888854" name="chkChoiceItem_268113" type="radio"   /><label for="chkChoiceItem_268113_1888854">B.普通股资金成本</label></div><div class="LH25"><input id="chkChoiceItem_268113_1888855" value="1888855" name="chkChoiceItem_268113" type="radio"   /><label for="chkChoiceItem_268113_1888855">C.加权平均资金成本</label></div><div class="LH25"><input id="chkChoiceItem_268113_1888856" value="1888856" name="chkChoiceItem_268113" type="radio"   /><label for="chkChoiceItem_268113_1888856">D.将以上三者综合起来表示  </label></div></div><div id="divQuestionContainer_268246" class="DisplayNone"><input type="hidden" id="hidQuestionType_268246" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">4. 创业风险一般来源于（  ）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268246_1889247" value="1889247" name="chkChoiceItem_268246" type="checkbox"   /><label for="chkChoiceItem_268246_1889247">A.融资缺口</label></div><div class="LH25"><input id="chkChoiceItem_268246_1889248" value="1889248" name="chkChoiceItem_268246" type="checkbox"   /><label for="chkChoiceItem_268246_1889248">B.研究缺口</label></div><div class="LH25"><input id="chkChoiceItem_268246_1889249" value="1889249" name="chkChoiceItem_268246" type="checkbox"   /><label for="chkChoiceItem_268246_1889249">C.资源缺口</label></div><div class="LH25"><input id="chkChoiceItem_268246_1889250" value="1889250" name="chkChoiceItem_268246" type="checkbox"   /><label for="chkChoiceItem_268246_1889250">D.经营不善</label></div></div><div id="divQuestionContainer_268228" class="DisplayNone"><input type="hidden" id="hidQuestionType_268228" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">5. 黑龙江发展新型战略性产业有哪些方面？（       ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268228_1889195" value="1889195" name="chkChoiceItem_268228" type="checkbox"   /><label for="chkChoiceItem_268228_1889195">A.电子信息 </label></div><div class="LH25"><input id="chkChoiceItem_268228_1889196" value="1889196" name="chkChoiceItem_268228" type="checkbox"   /><label for="chkChoiceItem_268228_1889196">B.节能环保 </label></div><div class="LH25"><input id="chkChoiceItem_268228_1889197" value="1889197" name="chkChoiceItem_268228" type="checkbox"   /><label for="chkChoiceItem_268228_1889197">C.新能源</label></div><div class="LH25"><input id="chkChoiceItem_268228_1889198" value="1889198" name="chkChoiceItem_268228" type="checkbox"   /><label for="chkChoiceItem_268228_1889198">D.煤炭产业   </label></div></div><div id="divQuestionContainer_268086" class="DisplayNone"><input type="hidden" id="hidQuestionType_268086" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">6. 下列不属于中小企业政策性融资是（）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268086_1888745" value="1888745" name="chkChoiceItem_268086" type="radio"   /><label for="chkChoiceItem_268086_1888745">A.地方性科技型中小企业技术创新资金</label></div><div class="LH25"><input id="chkChoiceItem_268086_1888746" value="1888746" name="chkChoiceItem_268086" type="radio"   /><label for="chkChoiceItem_268086_1888746">B. 中小企业发展专项资金</label></div><div class="LH25"><input id="chkChoiceItem_268086_1888747" value="1888747" name="chkChoiceItem_268086" type="radio"   /><label for="chkChoiceItem_268086_1888747">C.中小企业国际市场开拓基金</label></div><div class="LH25"><input id="chkChoiceItem_268086_1888748" value="1888748" name="chkChoiceItem_268086" type="radio"   /><label for="chkChoiceItem_268086_1888748">D. 中小企业互助担保基金</label></div></div><div id="divQuestionContainer_267940" class="DisplayNone"><input type="hidden" id="hidQuestionType_267940" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">7. 创业的前提条件之一就是创业者拥有或者能够支配一定的资源。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267940_1888351" value="1888351" name="chkChoiceItem_267940" type="radio"  checked="checked" /><label for="chkChoiceItem_267940_1888351">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_267940_1888352" value="1888352" name="chkChoiceItem_267940" type="radio"   /><label for="chkChoiceItem_267940_1888352">B.错误</label></div></div><div id="divQuestionContainer_268317" class="DisplayNone"><input type="hidden" id="hidQuestionType_268317" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">8. 设立合伙企业，应当由全体合伙人指定的代表或者共同委托的代理人向企业登记机构提交登记申请书、合伙协议书、（）等文件<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268317_1889510" value="1889510" name="chkChoiceItem_268317" type="radio"   /><label for="chkChoiceItem_268317_1889510">A.合伙人身份证明</label></div><div class="LH25"><input id="chkChoiceItem_268317_1889511" value="1889511" name="chkChoiceItem_268317" type="radio"   /><label for="chkChoiceItem_268317_1889511">B.营业执照</label></div><div class="LH25"><input id="chkChoiceItem_268317_1889512" value="1889512" name="chkChoiceItem_268317" type="radio"   /><label for="chkChoiceItem_268317_1889512">C.代理人委托书</label></div><div class="LH25"><input id="chkChoiceItem_268317_1889513" value="1889513" name="chkChoiceItem_268317" type="radio"   /><label for="chkChoiceItem_268317_1889513">D.以上全不对</label></div></div><div id="divQuestionContainer_267997" class="DisplayNone"><input type="hidden" id="hidQuestionType_267997" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">9. 初创公司需要建立完善的管理制度、有吸引力的薪酬制度<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267997_1888465" value="1888465" name="chkChoiceItem_267997" type="radio"   /><label for="chkChoiceItem_267997_1888465">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_267997_1888466" value="1888466" name="chkChoiceItem_267997" type="radio"   /><label for="chkChoiceItem_267997_1888466">B.错误</label></div></div><div id="divQuestionContainer_268184" class="DisplayNone"><input type="hidden" id="hidQuestionType_268184" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">10.  （    ）不是通过对影响资金结构因素的定性分析来确定合理的资金结构的方法。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268184_1889019" value="1889019" name="chkChoiceItem_268184" type="checkbox"   /><label for="chkChoiceItem_268184_1889019">A.息税前利润——每股利润分析方法</label></div><div class="LH25"><input id="chkChoiceItem_268184_1889020" value="1889020" name="chkChoiceItem_268184" type="checkbox"  checked="checked" /><label for="chkChoiceItem_268184_1889020">B.比较资金成本分析方法</label></div><div class="LH25"><input id="chkChoiceItem_268184_1889021" value="1889021" name="chkChoiceItem_268184" type="checkbox"   /><label for="chkChoiceItem_268184_1889021">C.因素分析方法</label></div><div class="LH25"><input id="chkChoiceItem_268184_1889022" value="1889022" name="chkChoiceItem_268184" type="checkbox"   /><label for="chkChoiceItem_268184_1889022">D.最佳资本结构的判断标准</label></div></div><div id="divQuestionContainer_268385" class="DisplayNone"><input type="hidden" id="hidQuestionType_268385" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">11. 在创业经营模拟中，订单中的账期是指（）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268385_1889762" value="1889762" name="chkChoiceItem_268385" type="radio"   /><label for="chkChoiceItem_268385_1889762">A.转产周期</label></div><div class="LH25"><input id="chkChoiceItem_268385_1889763" value="1889763" name="chkChoiceItem_268385" type="radio"   /><label for="chkChoiceItem_268385_1889763">B.生产周期</label></div><div class="LH25"><input id="chkChoiceItem_268385_1889764" value="1889764" name="chkChoiceItem_268385" type="radio"   /><label for="chkChoiceItem_268385_1889764">C.交货期限</label></div><div class="LH25"><input id="chkChoiceItem_268385_1889765" value="1889765" name="chkChoiceItem_268385" type="radio"   /><label for="chkChoiceItem_268385_1889765">D.应收款账期</label></div></div><div id="divQuestionContainer_268042" class="DisplayNone"><input type="hidden" id="hidQuestionType_268042" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">12.  商业模式的核心功能在于<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268042_1888589" value="1888589" name="chkChoiceItem_268042" type="radio"   /><label for="chkChoiceItem_268042_1888589">A.收入模式</label></div><div class="LH25"><input id="chkChoiceItem_268042_1888590" value="1888590" name="chkChoiceItem_268042" type="radio"   /><label for="chkChoiceItem_268042_1888590">B.成功管理</label></div><div class="LH25"><input id="chkChoiceItem_268042_1888591" value="1888591" name="chkChoiceItem_268042" type="radio"   /><label for="chkChoiceItem_268042_1888591">C.创造价值</label></div><div class="LH25"><input id="chkChoiceItem_268042_1888592" value="1888592" name="chkChoiceItem_268042" type="radio"   /><label for="chkChoiceItem_268042_1888592">D.隔绝机制</label></div></div><div id="divQuestionContainer_268115" class="DisplayNone"><input type="hidden" id="hidQuestionType_268115" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">13. 下列融资渠道中适合中小企业解决长期资金需要的是（）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268115_1888861" value="1888861" name="chkChoiceItem_268115" type="radio"   /><label for="chkChoiceItem_268115_1888861">A.融资租赁</label></div><div class="LH25"><input id="chkChoiceItem_268115_1888862" value="1888862" name="chkChoiceItem_268115" type="radio"   /><label for="chkChoiceItem_268115_1888862">B. 典当</label></div><div class="LH25"><input id="chkChoiceItem_268115_1888863" value="1888863" name="chkChoiceItem_268115" type="radio"   /><label for="chkChoiceItem_268115_1888863">C.商业信用</label></div><div class="LH25"><input id="chkChoiceItem_268115_1888864" value="1888864" name="chkChoiceItem_268115" type="radio"   /><label for="chkChoiceItem_268115_1888864">D.票据融资</label></div></div><div id="divQuestionContainer_268084" class="DisplayNone"><input type="hidden" id="hidQuestionType_268084" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">14. 下面不符合融资租赁特征的是（）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268084_1888737" value="1888737" name="chkChoiceItem_268084" type="radio"   /><label for="chkChoiceItem_268084_1888737">A.三边贸易，两个合同 </label></div><div class="LH25"><input id="chkChoiceItem_268084_1888738" value="1888738" name="chkChoiceItem_268084" type="radio"   /><label for="chkChoiceItem_268084_1888738">B.设备的所有权和使用权长期分离</label></div><div class="LH25"><input id="chkChoiceItem_268084_1888739" value="1888739" name="chkChoiceItem_268084" type="radio"   /><label for="chkChoiceItem_268084_1888739">C.全额清偿 </label></div><div class="LH25"><input id="chkChoiceItem_268084_1888740" value="1888740" name="chkChoiceItem_268084" type="radio"   /><label for="chkChoiceItem_268084_1888740">D.双方均可随时解约</label></div></div><div id="divQuestionContainer_267944" class="DisplayNone"><input type="hidden" id="hidQuestionType_267944" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">15. 大学生创业的最大困难之一就是能力缺乏。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267944_1888359" value="1888359" name="chkChoiceItem_267944" type="radio"   /><label for="chkChoiceItem_267944_1888359">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_267944_1888360" value="1888360" name="chkChoiceItem_267944" type="radio"  checked="checked" /><label for="chkChoiceItem_267944_1888360">B.错误</label></div></div><div id="divQuestionContainer_268365" class="DisplayNone"><input type="hidden" id="hidQuestionType_268365" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">16. 在创业经营模拟中，每条生产线同时只能有一个产品在线。产品上线时需要支付加工费，不同生产线的技术装备水平不同，产品所需原材料成本也不相同。所有产品的直接成本由直接材料和直接人工组成。下列表述正确的是（）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268365_1889682" value="1889682" name="chkChoiceItem_268365" type="radio"   /><label for="chkChoiceItem_268365_1889682">A.P1产品在半自动生产线上的直接成本是3M</label></div><div class="LH25"><input id="chkChoiceItem_268365_1889683" value="1889683" name="chkChoiceItem_268365" type="radio"   /><label for="chkChoiceItem_268365_1889683">B.P2产品在全自动生产线上的直接成本是4M</label></div><div class="LH25"><input id="chkChoiceItem_268365_1889684" value="1889684" name="chkChoiceItem_268365" type="radio"   /><label for="chkChoiceItem_268365_1889684">C.P3产品在手工生产线上的直接成本是4M</label></div><div class="LH25"><input id="chkChoiceItem_268365_1889685" value="1889685" name="chkChoiceItem_268365" type="radio"   /><label for="chkChoiceItem_268365_1889685">D.P4产品在柔性生产线上的直接成本是4M</label></div></div><div id="divQuestionContainer_268193" class="DisplayNone"><input type="hidden" id="hidQuestionType_268193" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">17. 2016年1月5日国家发展与改革委员会正式印发哈尔滨新区总体方案。根据方案新区将构建一带一核三组团协调发展新格局。一核是指（  ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268193_1889055" value="1889055" name="chkChoiceItem_268193" type="radio"   /><label for="chkChoiceItem_268193_1889055">A.松北核心区</label></div><div class="LH25"><input id="chkChoiceItem_268193_1889056" value="1889056" name="chkChoiceItem_268193" type="radio"   /><label for="chkChoiceItem_268193_1889056">B.呼兰核心区</label></div><div class="LH25"><input id="chkChoiceItem_268193_1889057" value="1889057" name="chkChoiceItem_268193" type="radio"   /><label for="chkChoiceItem_268193_1889057">C.平房核心区</label></div><div class="LH25"><input id="chkChoiceItem_268193_1889058" value="1889058" name="chkChoiceItem_268193" type="radio"   /><label for="chkChoiceItem_268193_1889058">D.群力核心区</label></div></div><div id="divQuestionContainer_267855" class="DisplayNone"><input type="hidden" id="hidQuestionType_267855" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">18. 在明确了创业动机后，在开始创业前，还要（  ）为成功创业奠定基础。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267855_1888031" value="1888031" name="chkChoiceItem_267855" type="radio"   /><label for="chkChoiceItem_267855_1888031">A.有物质基础</label></div><div class="LH25"><input id="chkChoiceItem_267855_1888032" value="1888032" name="chkChoiceItem_267855" type="radio"   /><label for="chkChoiceItem_267855_1888032">B.树立创业意识</label></div><div class="LH25"><input id="chkChoiceItem_267855_1888033" value="1888033" name="chkChoiceItem_267855" type="radio"   /><label for="chkChoiceItem_267855_1888033">C.有知识阅历</label></div><div class="LH25"><input id="chkChoiceItem_267855_1888034" value="1888034" name="chkChoiceItem_267855" type="radio"   /><label for="chkChoiceItem_267855_1888034">D.有实践经验</label></div></div><div id="divQuestionContainer_268120" class="DisplayNone"><input type="hidden" id="hidQuestionType_268120" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">19. 中小企业资金需求的规模较大时，可以采取的融资渠道、方式主要是（）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268120_1888881" value="1888881" name="chkChoiceItem_268120" type="radio"   /><label for="chkChoiceItem_268120_1888881">A.员工集资</label></div><div class="LH25"><input id="chkChoiceItem_268120_1888882" value="1888882" name="chkChoiceItem_268120" type="radio"   /><label for="chkChoiceItem_268120_1888882">B. 典当融资</label></div><div class="LH25"><input id="chkChoiceItem_268120_1888883" value="1888883" name="chkChoiceItem_268120" type="radio"   /><label for="chkChoiceItem_268120_1888883">C. 产权交易市场融资</label></div><div class="LH25"><input id="chkChoiceItem_268120_1888884" value="1888884" name="chkChoiceItem_268120" type="radio"   /><label for="chkChoiceItem_268120_1888884">D.商业信用融资</label></div></div><div id="divQuestionContainer_268148" class="DisplayNone"><input type="hidden" id="hidQuestionType_268148" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">20. 内源融资也有成本，即机会成本。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268148_1888943" value="1888943" name="chkChoiceItem_268148" type="radio"   /><label for="chkChoiceItem_268148_1888943">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_268148_1888944" value="1888944" name="chkChoiceItem_268148" type="radio"   /><label for="chkChoiceItem_268148_1888944">B.错误</label></div></div><div id="divQuestionContainer_268214" class="DisplayNone"><input type="hidden" id="hidQuestionType_268214" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">21. 面向黑龙江农业发展的主线，大学生涉农创新创业的空间有（       ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268214_1889139" value="1889139" name="chkChoiceItem_268214" type="checkbox"   /><label for="chkChoiceItem_268214_1889139">A.新型农业技术培训</label></div><div class="LH25"><input id="chkChoiceItem_268214_1889140" value="1889140" name="chkChoiceItem_268214" type="checkbox"   /><label for="chkChoiceItem_268214_1889140">B.新型畜牧业企业创办</label></div><div class="LH25"><input id="chkChoiceItem_268214_1889141" value="1889141" name="chkChoiceItem_268214" type="checkbox"   /><label for="chkChoiceItem_268214_1889141">C.新型农业机械研制  </label></div><div class="LH25"><input id="chkChoiceItem_268214_1889142" value="1889142" name="chkChoiceItem_268214" type="checkbox"   /><label for="chkChoiceItem_268214_1889142">D.农作物新品种研发 </label></div></div><div id="divQuestionContainer_267864" class="DisplayNone"><input type="hidden" id="hidQuestionType_267864" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">22. 对大多数管理者来说，缺少的是（  ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267864_1888067" value="1888067" name="chkChoiceItem_267864" type="radio"   /><label for="chkChoiceItem_267864_1888067">A.勇气</label></div><div class="LH25"><input id="chkChoiceItem_267864_1888068" value="1888068" name="chkChoiceItem_267864" type="radio"   /><label for="chkChoiceItem_267864_1888068">B.理智</label></div><div class="LH25"><input id="chkChoiceItem_267864_1888069" value="1888069" name="chkChoiceItem_267864" type="radio"   /><label for="chkChoiceItem_267864_1888069">C.态度</label></div><div class="LH25"><input id="chkChoiceItem_267864_1888070" value="1888070" name="chkChoiceItem_267864" type="radio"   /><label for="chkChoiceItem_267864_1888070">D.情感</label></div></div><div id="divQuestionContainer_268196" class="DisplayNone"><input type="hidden" id="hidQuestionType_268196" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">23. 黑龙江农业发展的主线是水利、科技、（  ）和生态。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268196_1889067" value="1889067" name="chkChoiceItem_268196" type="radio"   /><label for="chkChoiceItem_268196_1889067">A.农机</label></div><div class="LH25"><input id="chkChoiceItem_268196_1889068" value="1889068" name="chkChoiceItem_268196" type="radio"   /><label for="chkChoiceItem_268196_1889068">B.商品化</label></div><div class="LH25"><input id="chkChoiceItem_268196_1889069" value="1889069" name="chkChoiceItem_268196" type="radio"   /><label for="chkChoiceItem_268196_1889069">C.无土栽培</label></div><div class="LH25"><input id="chkChoiceItem_268196_1889070" value="1889070" name="chkChoiceItem_268196" type="radio"  checked="checked" /><label for="chkChoiceItem_268196_1889070">D.旅游化</label></div></div><div id="divQuestionContainer_268383" class="DisplayNone"><input type="hidden" id="hidQuestionType_268383" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">24. 创业模拟经营中的企业经营制定的规划中，不包括（）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268383_1889754" value="1889754" name="chkChoiceItem_268383" type="radio"   /><label for="chkChoiceItem_268383_1889754">A.战略规划</label></div><div class="LH25"><input id="chkChoiceItem_268383_1889755" value="1889755" name="chkChoiceItem_268383" type="radio"   /><label for="chkChoiceItem_268383_1889755">B.市场开发规划</label></div><div class="LH25"><input id="chkChoiceItem_268383_1889756" value="1889756" name="chkChoiceItem_268383" type="radio"   /><label for="chkChoiceItem_268383_1889756">C.资金筹集规划</label></div><div class="LH25"><input id="chkChoiceItem_268383_1889757" value="1889757" name="chkChoiceItem_268383" type="radio"   /><label for="chkChoiceItem_268383_1889757">D.人力资源规划</label></div></div><div id="divQuestionContainer_268203" class="DisplayNone"><input type="hidden" id="hidQuestionType_268203" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">25. 哈尔滨新区不包括（   ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268203_1889095" value="1889095" name="chkChoiceItem_268203" type="radio"   /><label for="chkChoiceItem_268203_1889095">A.松北区</label></div><div class="LH25"><input id="chkChoiceItem_268203_1889096" value="1889096" name="chkChoiceItem_268203" type="radio"   /><label for="chkChoiceItem_268203_1889096">B.香坊区</label></div><div class="LH25"><input id="chkChoiceItem_268203_1889097" value="1889097" name="chkChoiceItem_268203" type="radio"   /><label for="chkChoiceItem_268203_1889097">C.呼兰区</label></div><div class="LH25"><input id="chkChoiceItem_268203_1889098" value="1889098" name="chkChoiceItem_268203" type="radio"   /><label for="chkChoiceItem_268203_1889098">D.平房区</label></div></div><div id="divQuestionContainer_268180" class="DisplayNone"><input type="hidden" id="hidQuestionType_268180" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">26. 中小企业融资难的主要原因在于信息不对称、中小企业信用低。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268180_1889007" value="1889007" name="chkChoiceItem_268180" type="radio"   /><label for="chkChoiceItem_268180_1889007">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_268180_1889008" value="1889008" name="chkChoiceItem_268180" type="radio"  checked="checked" /><label for="chkChoiceItem_268180_1889008">B.错误</label></div></div><div id="divQuestionContainer_268053" class="DisplayNone"><input type="hidden" id="hidQuestionType_268053" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">27. 机会识别过程没有任何规律可言，不可学习更难以教授<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268053_1888621" value="1888621" name="chkChoiceItem_268053" type="radio"   /><label for="chkChoiceItem_268053_1888621">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_268053_1888622" value="1888622" name="chkChoiceItem_268053" type="radio"   /><label for="chkChoiceItem_268053_1888622">B.错误</label></div></div><div id="divQuestionContainer_268252" class="DisplayNone"><input type="hidden" id="hidQuestionType_268252" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">28. 通过市场调查，创业者能了解行业资讯，避免（ ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268252_1889271" value="1889271" name="chkChoiceItem_268252" type="radio"   /><label for="chkChoiceItem_268252_1889271">A.投入风险</label></div><div class="LH25"><input id="chkChoiceItem_268252_1889272" value="1889272" name="chkChoiceItem_268252" type="radio"   /><label for="chkChoiceItem_268252_1889272">B.决策错误</label></div><div class="LH25"><input id="chkChoiceItem_268252_1889273" value="1889273" name="chkChoiceItem_268252" type="radio"   /><label for="chkChoiceItem_268252_1889273">C.战略不当</label></div><div class="LH25"><input id="chkChoiceItem_268252_1889274" value="1889274" name="chkChoiceItem_268252" type="radio"   /><label for="chkChoiceItem_268252_1889274">D.经营不善</label></div></div><div id="divQuestionContainer_267911" class="DisplayNone"><input type="hidden" id="hidQuestionType_267911" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">29. 资源拼凑理论在自身的发展当中形成了三个核心概念，不包括（）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267911_1888235" value="1888235" name="chkChoiceItem_267911" type="radio"   /><label for="chkChoiceItem_267911_1888235">A.整合现有资源</label></div><div class="LH25"><input id="chkChoiceItem_267911_1888236" value="1888236" name="chkChoiceItem_267911" type="radio"   /><label for="chkChoiceItem_267911_1888236">B.突破资源约束</label></div><div class="LH25"><input id="chkChoiceItem_267911_1888237" value="1888237" name="chkChoiceItem_267911" type="radio"   /><label for="chkChoiceItem_267911_1888237">C.即兴创作</label></div><div class="LH25"><input id="chkChoiceItem_267911_1888238" value="1888238" name="chkChoiceItem_267911" type="radio"   /><label for="chkChoiceItem_267911_1888238">D.凑合利用</label></div></div><div id="divQuestionContainer_267880" class="DisplayNone"><input type="hidden" id="hidQuestionType_267880" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">30. 优化创业团队的运作机制包括<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267880_1888131" value="1888131" name="chkChoiceItem_267880" type="checkbox"   /><label for="chkChoiceItem_267880_1888131">A.做好决策权限分配</label></div><div class="LH25"><input id="chkChoiceItem_267880_1888132" value="1888132" name="chkChoiceItem_267880" type="checkbox"   /><label for="chkChoiceItem_267880_1888132">B.制定员工激励办法</label></div><div class="LH25"><input id="chkChoiceItem_267880_1888133" value="1888133" name="chkChoiceItem_267880" type="checkbox"   /><label for="chkChoiceItem_267880_1888133">C.建立业绩评估体系</label></div><div class="LH25"><input id="chkChoiceItem_267880_1888134" value="1888134" name="chkChoiceItem_267880" type="checkbox"   /><label for="chkChoiceItem_267880_1888134">D.塑造团队文化</label></div></div><div id="divQuestionContainer_268198" class="DisplayNone"><input type="hidden" id="hidQuestionType_268198" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">31. 到2020年，我国将出现一个每年超过（  ）亿的国内旅游人次。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268198_1889075" value="1889075" name="chkChoiceItem_268198" type="radio"   /><label for="chkChoiceItem_268198_1889075">A.30</label></div><div class="LH25"><input id="chkChoiceItem_268198_1889076" value="1889076" name="chkChoiceItem_268198" type="radio"   /><label for="chkChoiceItem_268198_1889076">B.40</label></div><div class="LH25"><input id="chkChoiceItem_268198_1889077" value="1889077" name="chkChoiceItem_268198" type="radio"   /><label for="chkChoiceItem_268198_1889077">C.50</label></div><div class="LH25"><input id="chkChoiceItem_268198_1889078" value="1889078" name="chkChoiceItem_268198" type="radio"   /><label for="chkChoiceItem_268198_1889078">D.60</label></div></div><div id="divQuestionContainer_267965" class="DisplayNone"><input type="hidden" id="hidQuestionType_267965" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">32. 创业的基本问题是解决创业者素质和创业项目选择两件事<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267965_1888401" value="1888401" name="chkChoiceItem_267965" type="radio"   /><label for="chkChoiceItem_267965_1888401">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_267965_1888402" value="1888402" name="chkChoiceItem_267965" type="radio"   /><label for="chkChoiceItem_267965_1888402">B.错误</label></div></div><div id="divQuestionContainer_268116" class="DisplayNone"><input type="hidden" id="hidQuestionType_268116" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">33. 票据融资最适合解决中小企业的哪一方面资金需求（）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268116_1888865" value="1888865" name="chkChoiceItem_268116" type="radio"   /><label for="chkChoiceItem_268116_1888865">A.长期资金</label></div><div class="LH25"><input id="chkChoiceItem_268116_1888866" value="1888866" name="chkChoiceItem_268116" type="radio"   /><label for="chkChoiceItem_268116_1888866">B.发展资金</label></div><div class="LH25"><input id="chkChoiceItem_268116_1888867" value="1888867" name="chkChoiceItem_268116" type="radio"  checked="checked" /><label for="chkChoiceItem_268116_1888867">C.固定资产投资</label></div><div class="LH25"><input id="chkChoiceItem_268116_1888868" value="1888868" name="chkChoiceItem_268116" type="radio"   /><label for="chkChoiceItem_268116_1888868">D.周转资金</label></div></div><div id="divQuestionContainer_267850" class="DisplayNone"><input type="hidden" id="hidQuestionType_267850" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">34. 创业者的概念历经演变的过程。这一词最早由那个国家（  ）首次提出引入经济学。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267850_1888011" value="1888011" name="chkChoiceItem_267850" type="radio"   /><label for="chkChoiceItem_267850_1888011">A.英国</label></div><div class="LH25"><input id="chkChoiceItem_267850_1888012" value="1888012" name="chkChoiceItem_267850" type="radio"   /><label for="chkChoiceItem_267850_1888012">B.法国 </label></div><div class="LH25"><input id="chkChoiceItem_267850_1888013" value="1888013" name="chkChoiceItem_267850" type="radio"   /><label for="chkChoiceItem_267850_1888013">C.美国</label></div><div class="LH25"><input id="chkChoiceItem_267850_1888014" value="1888014" name="chkChoiceItem_267850" type="radio"   /><label for="chkChoiceItem_267850_1888014">D.德国</label></div></div><div id="divQuestionContainer_267863" class="DisplayNone"><input type="hidden" id="hidQuestionType_267863" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">35. 下列哪项不属于产权具有的性质（  ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267863_1888063" value="1888063" name="chkChoiceItem_267863" type="radio"   /><label for="chkChoiceItem_267863_1888063">A.经济实体性</label></div><div class="LH25"><input id="chkChoiceItem_267863_1888064" value="1888064" name="chkChoiceItem_267863" type="radio"   /><label for="chkChoiceItem_267863_1888064">B.分割性</label></div><div class="LH25"><input id="chkChoiceItem_267863_1888065" value="1888065" name="chkChoiceItem_267863" type="radio"   /><label for="chkChoiceItem_267863_1888065">C.可分离性</label></div><div class="LH25"><input id="chkChoiceItem_267863_1888066" value="1888066" name="chkChoiceItem_267863" type="radio"   /><label for="chkChoiceItem_267863_1888066">D.独立性</label></div></div><div id="divQuestionContainer_267874" class="DisplayNone"><input type="hidden" id="hidQuestionType_267874" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">36. 大学生创业意识的培养主要有以下个方面<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267874_1888107" value="1888107" name="chkChoiceItem_267874" type="checkbox"   /><label for="chkChoiceItem_267874_1888107">A.商机意识</label></div><div class="LH25"><input id="chkChoiceItem_267874_1888108" value="1888108" name="chkChoiceItem_267874" type="checkbox"   /><label for="chkChoiceItem_267874_1888108">B.转化意识</label></div><div class="LH25"><input id="chkChoiceItem_267874_1888109" value="1888109" name="chkChoiceItem_267874" type="checkbox"   /><label for="chkChoiceItem_267874_1888109">C.经营意识</label></div><div class="LH25"><input id="chkChoiceItem_267874_1888110" value="1888110" name="chkChoiceItem_267874" type="checkbox"   /><label for="chkChoiceItem_267874_1888110">D.战略意识</label></div></div><div id="divQuestionContainer_267878" class="DisplayNone"><input type="hidden" id="hidQuestionType_267878" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">37. 团队应包括的基本人才有<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267878_1888123" value="1888123" name="chkChoiceItem_267878" type="checkbox"   /><label for="chkChoiceItem_267878_1888123">A.操作型人才</label></div><div class="LH25"><input id="chkChoiceItem_267878_1888124" value="1888124" name="chkChoiceItem_267878" type="checkbox"   /><label for="chkChoiceItem_267878_1888124">B.管理型人才</label></div><div class="LH25"><input id="chkChoiceItem_267878_1888125" value="1888125" name="chkChoiceItem_267878" type="checkbox"   /><label for="chkChoiceItem_267878_1888125">C.营销型人才</label></div><div class="LH25"><input id="chkChoiceItem_267878_1888126" value="1888126" name="chkChoiceItem_267878" type="checkbox"   /><label for="chkChoiceItem_267878_1888126">D.技术型人才</label></div></div><div id="divQuestionContainer_268302" class="DisplayNone"><input type="hidden" id="hidQuestionType_268302" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">38. 下列属于人们创办企业失败的原因的是（）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268302_1889450" value="1889450" name="chkChoiceItem_268302" type="radio"   /><label for="chkChoiceItem_268302_1889450">A.管理不善</label></div><div class="LH25"><input id="chkChoiceItem_268302_1889451" value="1889451" name="chkChoiceItem_268302" type="radio"   /><label for="chkChoiceItem_268302_1889451">B.盗窃和欺骗</label></div><div class="LH25"><input id="chkChoiceItem_268302_1889452" value="1889452" name="chkChoiceItem_268302" type="radio"  checked="checked" /><label for="chkChoiceItem_268302_1889452">C.经验不全面</label></div><div class="LH25"><input id="chkChoiceItem_268302_1889453" value="1889453" name="chkChoiceItem_268302" type="radio"   /><label for="chkChoiceItem_268302_1889453">D.以上全是</label></div></div><div id="divQuestionContainer_267889" class="DisplayNone"><input type="hidden" id="hidQuestionType_267889" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">39. 创业团队的社会责任包括<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267889_1888167" value="1888167" name="chkChoiceItem_267889" type="checkbox"   /><label for="chkChoiceItem_267889_1888167">A.法律责任</label></div><div class="LH25"><input id="chkChoiceItem_267889_1888168" value="1888168" name="chkChoiceItem_267889" type="checkbox"   /><label for="chkChoiceItem_267889_1888168">B.公益责任</label></div><div class="LH25"><input id="chkChoiceItem_267889_1888169" value="1888169" name="chkChoiceItem_267889" type="checkbox"   /><label for="chkChoiceItem_267889_1888169">C.公平运行责任</label></div><div class="LH25"><input id="chkChoiceItem_267889_1888170" value="1888170" name="chkChoiceItem_267889" type="checkbox"   /><label for="chkChoiceItem_267889_1888170">D.消费者责任</label></div></div><div id="divQuestionContainer_267938" class="DisplayNone"><input type="hidden" id="hidQuestionType_267938" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">40. 新创资源的资源整合方式包括（）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267938_1888343" value="1888343" name="chkChoiceItem_267938" type="checkbox"   /><label for="chkChoiceItem_267938_1888343">A.技术驱动型</label></div><div class="LH25"><input id="chkChoiceItem_267938_1888344" value="1888344" name="chkChoiceItem_267938" type="checkbox"   /><label for="chkChoiceItem_267938_1888344">B.人力资本驱动型</label></div><div class="LH25"><input id="chkChoiceItem_267938_1888345" value="1888345" name="chkChoiceItem_267938" type="checkbox"   /><label for="chkChoiceItem_267938_1888345">C.能源驱动型</label></div><div class="LH25"><input id="chkChoiceItem_267938_1888346" value="1888346" name="chkChoiceItem_267938" type="checkbox"   /><label for="chkChoiceItem_267938_1888346">D.资金驱动型</label></div></div><div id="divQuestionContainer_268182" class="DisplayNone"><input type="hidden" id="hidQuestionType_268182" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">41.  以下哪项属于产权融资渠道（）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268182_1889011" value="1889011" name="chkChoiceItem_268182" type="checkbox"   /><label for="chkChoiceItem_268182_1889011">A.商业信用</label></div><div class="LH25"><input id="chkChoiceItem_268182_1889012" value="1889012" name="chkChoiceItem_268182" type="checkbox"   /><label for="chkChoiceItem_268182_1889012">B.风险投资家</label></div><div class="LH25"><input id="chkChoiceItem_268182_1889013" value="1889013" name="chkChoiceItem_268182" type="checkbox"   /><label for="chkChoiceItem_268182_1889013">C.企业孵化器</label></div><div class="LH25"><input id="chkChoiceItem_268182_1889014" value="1889014" name="chkChoiceItem_268182" type="checkbox"   /><label for="chkChoiceItem_268182_1889014">D.员工股权计划或顾客</label></div></div><div id="divQuestionContainer_268242" class="DisplayNone"><input type="hidden" id="hidQuestionType_268242" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">42. 创业风险的涵义表述不正确的是（）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268242_1889231" value="1889231" name="chkChoiceItem_268242" type="radio"   /><label for="chkChoiceItem_268242_1889231">A.创业风险是指在创业过程中，由于创业环境的不确定性导致风险</label></div><div class="LH25"><input id="chkChoiceItem_268242_1889232" value="1889232" name="chkChoiceItem_268242" type="radio"   /><label for="chkChoiceItem_268242_1889232">B.创业风险是指在创业过程中，创业机会与创业企业的复杂性导致风险　</label></div><div class="LH25"><input id="chkChoiceItem_268242_1889233" value="1889233" name="chkChoiceItem_268242" type="radio"   /><label for="chkChoiceItem_268242_1889233">C.创业风险是指在创业过程中，创业者 、创业团队的能力与实力的有限性导致风险</label></div><div class="LH25"><input id="chkChoiceItem_268242_1889234" value="1889234" name="chkChoiceItem_268242" type="radio"   /><label for="chkChoiceItem_268242_1889234">D.创业风险是指在创业过程中，创业资金不足导致风险</label></div></div><div id="divQuestionContainer_268188" class="DisplayNone"><input type="hidden" id="hidQuestionType_268188" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">43.  决定企业债券等级高低的因素主要没有（     ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268188_1889035" value="1889035" name="chkChoiceItem_268188" type="checkbox"   /><label for="chkChoiceItem_268188_1889035">A.企业素质</label></div><div class="LH25"><input id="chkChoiceItem_268188_1889036" value="1889036" name="chkChoiceItem_268188" type="checkbox"   /><label for="chkChoiceItem_268188_1889036">B.投资项目</label></div><div class="LH25"><input id="chkChoiceItem_268188_1889037" value="1889037" name="chkChoiceItem_268188" type="checkbox"   /><label for="chkChoiceItem_268188_1889037">C.企业的财务状况</label></div><div class="LH25"><input id="chkChoiceItem_268188_1889038" value="1889038" name="chkChoiceItem_268188" type="checkbox"   /><label for="chkChoiceItem_268188_1889038">D.以上都是</label></div></div><div id="divQuestionContainer_268213" class="DisplayNone"><input type="hidden" id="hidQuestionType_268213" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">44. 黑龙江具有优势的领域包括（        ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268213_1889135" value="1889135" name="chkChoiceItem_268213" type="checkbox"   /><label for="chkChoiceItem_268213_1889135">A.信息服务业</label></div><div class="LH25"><input id="chkChoiceItem_268213_1889136" value="1889136" name="chkChoiceItem_268213" type="checkbox"   /><label for="chkChoiceItem_268213_1889136">B.现代农业</label></div><div class="LH25"><input id="chkChoiceItem_268213_1889137" value="1889137" name="chkChoiceItem_268213" type="checkbox"   /><label for="chkChoiceItem_268213_1889137">C.生态旅游业</label></div><div class="LH25"><input id="chkChoiceItem_268213_1889138" value="1889138" name="chkChoiceItem_268213" type="checkbox"   /><label for="chkChoiceItem_268213_1889138">D.高新技术产业</label></div></div><div id="divQuestionContainer_268264" class="DisplayNone"><input type="hidden" id="hidQuestionType_268264" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">45. 创业计划书竞赛起源于（ ）。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268264_1889318" value="1889318" name="chkChoiceItem_268264" type="radio"   /><label for="chkChoiceItem_268264_1889318">A.日本 </label></div><div class="LH25"><input id="chkChoiceItem_268264_1889319" value="1889319" name="chkChoiceItem_268264" type="radio"   /><label for="chkChoiceItem_268264_1889319">B.英国</label></div><div class="LH25"><input id="chkChoiceItem_268264_1889320" value="1889320" name="chkChoiceItem_268264" type="radio"   /><label for="chkChoiceItem_268264_1889320">C.美国</label></div><div class="LH25"><input id="chkChoiceItem_268264_1889321" value="1889321" name="chkChoiceItem_268264" type="radio"   /><label for="chkChoiceItem_268264_1889321">D.中国</label></div></div><div id="divQuestionContainer_268216" class="DisplayNone"><input type="hidden" id="hidQuestionType_268216" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">46. 黑龙江教育转型给大学生的创新创业机会主要体现在（     ）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268216_1889147" value="1889147" name="chkChoiceItem_268216" type="checkbox"   /><label for="chkChoiceItem_268216_1889147">A.黑龙江学前教育转型带给大学生的创新创业机会</label></div><div class="LH25"><input id="chkChoiceItem_268216_1889148" value="1889148" name="chkChoiceItem_268216" type="checkbox"   /><label for="chkChoiceItem_268216_1889148">B.黑龙江中小学教育转型带给大学生的创新创业机会</label></div><div class="LH25"><input id="chkChoiceItem_268216_1889149" value="1889149" name="chkChoiceItem_268216" type="checkbox"   /><label for="chkChoiceItem_268216_1889149">C.黑龙江特殊教育转型带给大学生的创新创业机会</label></div><div class="LH25"><input id="chkChoiceItem_268216_1889150" value="1889150" name="chkChoiceItem_268216" type="checkbox"   /><label for="chkChoiceItem_268216_1889150">D.黑龙江职业教育转型带给大学生的创新创业机会</label></div></div><div id="divQuestionContainer_267893" class="DisplayNone"><input type="hidden" id="hidQuestionType_267893" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">47. 创业意识是人们从事创业活动的出发点与内驱力，是创业思维和创业行为的前提。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_267893_1888177" value="1888177" name="chkChoiceItem_267893" type="radio"   /><label for="chkChoiceItem_267893_1888177">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_267893_1888178" value="1888178" name="chkChoiceItem_267893" type="radio"   /><label for="chkChoiceItem_267893_1888178">B.错误</label></div></div><div id="divQuestionContainer_268233" class="DisplayNone"><input type="hidden" id="hidQuestionType_268233" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">48. 教育、文化产业不是黑龙江的优势领域<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268233_1889213" value="1889213" name="chkChoiceItem_268233" type="radio"   /><label for="chkChoiceItem_268233_1889213">A.正确</label></div><div class="LH25"><input id="chkChoiceItem_268233_1889214" value="1889214" name="chkChoiceItem_268233" type="radio"   /><label for="chkChoiceItem_268233_1889214">B.错误</label></div></div><div id="divQuestionContainer_268306" class="DisplayNone"><input type="hidden" id="hidQuestionType_268306" value="3" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">49. 登记机关收到设立申请文件之日起（）日以内，对符合规定条件的，予以登记并发给营业执照，营业执照的签发日期为个人独资企业成立日期。<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268306_1889466" value="1889466" name="chkChoiceItem_268306" type="radio"   /><label for="chkChoiceItem_268306_1889466">A.9</label></div><div class="LH25"><input id="chkChoiceItem_268306_1889467" value="1889467" name="chkChoiceItem_268306" type="radio"   /><label for="chkChoiceItem_268306_1889467">B.15</label></div><div class="LH25"><input id="chkChoiceItem_268306_1889468" value="1889468" name="chkChoiceItem_268306" type="radio"   /><label for="chkChoiceItem_268306_1889468">C.30</label></div><div class="LH25"><input id="chkChoiceItem_268306_1889469" value="1889469" name="chkChoiceItem_268306" type="radio"   /><label for="chkChoiceItem_268306_1889469">D.20</label></div></div><div id="divQuestionContainer_268332" class="DisplayNone"><input type="hidden" id="hidQuestionType_268332" value="4" name="hidQuestionType" /><div class="Width960 BottomLineTitle HideOverflow ClearBoth">50. 下面是股东大会需要注意的事项的是（）<label class="TextColorGray">(2.0分)</label></div><div class="LH25"><input id="chkChoiceItem_268332_1889570" value="1889570" name="chkChoiceItem_268332" type="checkbox"   /><label for="chkChoiceItem_268332_1889570">A.公司住所证明</label></div><div class="LH25"><input id="chkChoiceItem_268332_1889571" value="1889571" name="chkChoiceItem_268332" type="checkbox"   /><label for="chkChoiceItem_268332_1889571">B.企业名称预先核准通知书   </label></div><div class="LH25"><input id="chkChoiceItem_268332_1889572" value="1889572" name="chkChoiceItem_268332" type="checkbox"   /><label for="chkChoiceItem_268332_1889572">C.公司法定代理人任职文件和身份证明</label></div><div class="LH25"><input id="chkChoiceItem_268332_1889573" value="1889573" name="chkChoiceItem_268332" type="checkbox"   /><label for="chkChoiceItem_268332_1889573">D.发起人的法人资格证明或者自然人身份证明</label></div></div></div></div><div class="Width980 BottomLineTitle"><input type="button" style="float: left; margin:10px 10px 10px 0;" id="btnPreQuestion" value="上一题" class="GSButtonStand" onmouseover="this.className=this.className.replace('GSButtonStand','GSButtonHover');" onmouseout="this.className=this.className.replace('GSButtonHover','GSButtonStand');" onclick="Homework.SelectQuestion(Homework.curindex-1);" /><input type="button" style="float: right; margin:10px 10px 10px 0;" id="btnNextQuestion" value="下一题" class="GSButtonStand" onmouseover="this.className=this.className.replace('GSButtonStand','GSButtonHover');" onmouseout="this.className=this.className.replace('GSButtonHover','GSButtonStand');" onclick="Homework.SelectQuestion(Homework.curindex+1);" /></div>
+</div>
+</div>
+<input name="DoHomework1$hidExamID" type="hidden" id="DoHomework1_hidExamID" value="3386" />
+<input name="DoHomework1$hidSource" type="hidden" id="DoHomework1_hidSource" value="2" />
+<input name="DoHomework1$hidStudentID" type="hidden" id="DoHomework1_hidStudentID" value="53693" />
+<input name="DoHomework1$hidWebID" type="hidden" id="DoHomework1_hidWebID" value="315" />
+<span style="display: none;"><input id="DoHomework1_chkIsSendScore" type="checkbox" name="DoHomework1$chkIsSendScore" /></span>
+
+<script type="text/javascript">
+var shengyushijian = '剩余时间';
+var chakancankaodaan = '查看参考答案';
+document.body.onresize = function()
+{
+    Homework.WindowInit();
+}
+var usedtime = 0;
+var fsource = '2';
+var testtime = new Number('56')*60;
+var lblUsedID = 'DoHomework1_lblUsedTime';
+var questionTotalCount = new Number('50');  //new Number(document.getElementById('DoHomework1_lblTotalCount').innerHTML);
+var lblRemainID = 'DoHomework1_lblRemainTime';
+var hiddencontrolid = 'DoHomework1_hidStudentAnswer';
+var CorrectAnswerIDs = '';
+var chkIsSendScore = document.getElementById('DoHomework1_chkIsSendScore');
+var isSingle = 'true';
+var strtimerformat = ' / 已用时间:{0}:{1}:{2}';
+var homeworkstatus = '0';
+var homeworkid = document.getElementById('DoHomework1_hidExamID').value;
+var studentid = document.getElementById('DoHomework1_hidStudentID').value;
+var webid = document.getElementById('DoHomework1_hidWebID').value;
+var lblFinishedCountID = 'DoHomework1_lblFinishedCount';
+if(isSingle=='false')
+{
+    strtimerformat = '已用时间:{0}:{1}:{2}';
+}
+Homework.WindowInit();
+if(testtime>0 && homeworkstatus == '0') papertimer = setTimeout('ChangeTimeStatus()',1000);
+var HomeworkMark = {
+    ninshurudefenshudayuzongfen: '您输入的分数大于总分!',
+    qingzhengqueshurufenshu: '请正确输入分数!',
+    tianjiaquanyue: '添加圈阅',
+    tianjiapingyu: '添加评语',
+    chakanpingyu: '查看评语',
+    ViewComment:function(id)
+    {
+        var url = '/G2S/PublicWindow/ViewComment.aspx?hwid='+homeworkid+'&ID='+id+'&uid='+studentid+'&fSource=Exam&webid='+webid;
+        commentwindow = dhtmlmodal.open('EmailBox', 'iframe', url, HomeworkMark.chakanpingyu, 'width=500px,height=320px,center=1,resize=0,scrolling=0');
+    },
+    GetReference:function(id,qindex)
+    {
+        if(!qindex) {qindex=1;}
+        var url = '/G2S/PublicWindow/ReferenceWindow.aspx?ID='+id+'&QIndex='+qindex;
+        referencewindow = dhtmlmodal.open('EmailBox', 'iframe', url, '查看参考答案', 'width=640px,height=420px,center=1,resize=0,scrolling=0');
+    }
+};
+</script>
+
+
+    </div>
+    <input name="hidUserID" type="hidden" id="hidUserID" value="53693" />
+    <div class="MT10 Width980 HideOverflow" style="margin: 0 auto;">
+        <input name="btnReturn" type="button" id="btnReturn" style="float: right; margin: 10px 10px 10px 0;" onclick="PublicObject.CloseWindow();" value="关闭" class="GSButtonStand" onmouseover="this.className='GSButtonHover';" onmouseout="this.className='GSButtonStand';" />
+        <input name="btnReset" type="reset" id="btnReset" style="float: right; margin: 10px 10px 10px 0; display:none;" value="终止" class="GSButtonStand" onmouseover="this.className='GSButtonHover';" onmouseout="this.className='GSButtonStand';" />
+        <input name="btnTempSave" type="button" id="btnTempSave" style="float: right; margin: 10px 10px 10px 0;" onclick="SaveTemplateAnswer();" value="暂存" class="GSButtonStand" onmouseover="this.className='GSButtonHover';" onmouseout="this.className='GSButtonStand';" />
+        <input name="btnSure" type="button" id="btnSure" style="float: right; margin: 10px 10px 10px 0;" class="GSButtonStand" onmouseover="this.className='GSButtonHover';" onmouseout="this.className='GSButtonStand';" onclick="SubmitPage(this);" value="提交" />
+        <input type="submit" name="btnSubmit" value="Button" id="btnSubmit" style="display: none;" />
+    </div>
+
+    <script type="text/javascript">
+    var timespan = new Number('120000');
+    var ExamID = '3386';
+    var uid = document.getElementById('hidUserID').value;
+    var hltime = document.getElementById('hLoginDataTime').value;
+    var timertempsave;
+    var islock = 0;
+    var tempsave = function() {
+        Homework.SaveAnswer();
+        //__XmlHttpPool__.GetRemoteData('ExamService.ashx?OptType=SaveTemplateAnswer&ID=' + ExamID + '&uid=' + uid + '&hltime=' + hltime + '&info=' + escape(document.getElementById(hiddencontrolid).value), DealTempSave);
+        var params = {
+            OptType: "SaveTemplateAnswer",
+            ID: ExamID,
+            uid: uid,
+            hltime: hltime,
+            info:document.getElementById(hiddencontrolid).value
+        };
+        $.ajax({ url: "ExamService.ashx", data: params, type: 'post', cache: false, async: false, success: function(data) {
+                DealTempSave(data);
+            }
+        });
+
+        timertempsave = setTimeout("tempsave()",timespan);
+    }
+    var SaveTemplateAnswer = function()
+    {
+        Homework.SaveAnswer();
+        //__XmlHttpPool__.GetRemoteData('ExamService.ashx?OptType=SaveTemplateAnswer&ID=' + ExamID + '&uid=' + uid + '&hltime=' + hltime + '&info=' + escape(document.getElementById(hiddencontrolid).value), DealTempSave1);
+        var params = {
+            OptType: "SaveTemplateAnswer",
+            ID: ExamID,
+            uid: uid,
+            hltime: hltime,
+            info: document.getElementById(hiddencontrolid).value
+        };
+        $.ajax({ url: "ExamService.ashx", data: params, type: 'post', cache: false, async: false, success: function(data) {
+                DealTempSave1(data);
+            }
+        });
+    }
+    var DealTempSave1 = function(ret) {
+        if (ret == "true") {
+            alert('保存成功！');
+        } else {
+            alert("您已在别处登录,不能提交");
+            window.close();
+        }
+    }
+    var DealTempSave = function(ret) {
+        if (ret == "False") {
+            alert("您已在别处登录,不能提交");
+            window.close();
+        }
+    }
+    setTimeout("tempsave()",timespan);
+
+    var SubmitPage = function(elmt) {
+        if (elmt) {
+            var flaglock = 0; //guokaiju20130704 0:可以提交 1不能提交 解决 用户如果不答完是不允许提交的
+            if (islock == 0) {
+                if (testtime <= 0) {
+                    clearTimeout(timertempsave);
+                }
+                Homework.SaveAnswer();
+                var strflag = document.getElementById(hiddencontrolid).value;
+                var flagvaa = strflag.split("♂$♀");
+                for (var i = 0; i < flagvaa.length; i++) {
+                    if (flagvaa[i].indexOf("AA") > -1) {
+                        var kk = flagvaa[i].split("@&☆");
+                        if (kk[1].length <= 0) {
+                            flaglock = 1;
+                        }
+                    }
+                }
+                if (flaglock == 0) {
+                    //__XmlHttpPool__.GetRemoteData('ExamService.ashx?OptType=SaveTemplateAnswer&ID=' + ExamID + '&uid=' + uid + '&hltime=' + hltime + '&info=' + escape(document.getElementById(hiddencontrolid).value), ShowConfirmWindow);
+                    var params = {
+                        OptType: "SaveTemplateAnswer",
+                        ID: ExamID,
+                        uid: uid,
+                        hltime: hltime,
+                        info: document.getElementById(hiddencontrolid).value
+                    };
+                    $.ajax({ url: "ExamService.ashx", data: params, type: 'post', cache: false, async: false, success: function(data) {
+                            ShowConfirmWindow();
+                        }
+                    });
+                } else {
+                    alert("请先完成所有的习题");
+                }
+            }
+        }
+        else {
+            Homework.SaveAnswer();
+//            __XmlHttpPool__.GetRemoteData('ExamService.ashx?OptType=SaveTemplateAnswer&ID=' + ExamID + '&uid=' + uid + '&info=' + escape(document.getElementById(hiddencontrolid).value), function() {
+//                document.getElementById('btnSubmit').click();
+//            });
+
+            var params = {
+                OptType: "SaveTemplateAnswer",
+                ID: ExamID,
+                uid: uid,
+                info: document.getElementById(hiddencontrolid).value
+            };
+            $.ajax({ url: "ExamService.ashx", data: params, type: 'post', cache: false, async: false, success: function(data) {
+                    document.getElementById('btnSubmit').click();
+                }
+            });
+
+        }
+    }
+    var ShowConfirmWindow = function(ret) {
+        if (islock == 0) {
+            islock = 1;   //锁定，避免时间到了后重复弹出
+            if (ret != "False") {
+                confirmwindow = dhtmlmodal.open('EmailBox', 'iframe', 'ConfirmSubmit.aspx?id=' + ExamID + '&uid=' + uid + '&wid=' + webid, '考试提交确认', 'width=1000px,height=500px,center=1,resize=0,scrolling=0');
+                confirmwindow.onclose = function() {
+                    islock = 0;
+                }
+            } else {
+                alert("您已在别处登录,不能提交");
+                window.close();
+            }
+        }
+    }
+    var IsSubmit = function(issubmit)
+    {
+        confirmwindow.hide();
+        if(issubmit==1)
+        {
+            document.getElementById('btnSubmit').click();
+        }
+        else
+        {//取消提交，解除锁定
+
+            islock = 0;
+        }
+    }
+    //周锡喻/2014-12-9/字体设置
+    function fize(s)
+    {
+        if(s==1)
+        {
+            document.body.style.fontSize="12px";
+            document.getElementById("fize1").style.fontSize="14px";
+            var ss=document.getElementsByTagName("div");
+            for(var i=0;i<ss.length;i++)
+            {
+                if(ss[i].className=="AligntoRight Width700 MR10")
+                {
+                    ss[i].style.fontSize="12px";
+                }
+            }
+            document.getElementById("Select1").value="12";
+        }
+        else if(s==2)
+        {
+            document.body.style.fontSize="16px";
+            document.getElementById("fize1").style.fontSize="14px";
+            var ss=document.getElementsByTagName("div");
+            for(var i=0;i<ss.length;i++)
+            {
+                if(ss[i].className=="AligntoRight Width700 MR10")
+                {
+                    ss[i].style.fontSize="12px";
+                }
+            }
+            document.getElementById("Select1").value="16";
+        }
+        else if(s==3)
+        {
+            document.body.style.fontSize="20px";
+            document.getElementById("fize1").style.fontSize="14px";
+            var ss=document.getElementsByTagName("div");
+            for(var i=0;i<ss.length;i++)
+            {
+                if(ss[i].className=="AligntoRight Width700 MR10")
+                {
+                    ss[i].style.fontSize="12px";
+                }
+            }
+            document.getElementById("Select1").value="20";
+        }
+        else
+        {
+            var aa=document.getElementById("Select1").value;
+            document.body.style.fontSize=aa+"px";
+            var ss=document.getElementsByTagName("div");
+            for(var i=0;i<ss.length;i++)
+            {
+                if(ss[i].className=="AligntoRight Width700 MR10")
+                {
+                    ss[i].style.fontSize="12px";
+                }
+            }
+            document.getElementById("fize1").style.fontSize="14px";
+        }
+    }
+    function show()
+    {
+        var div=document.getElementById("fize1");
+        if(div.style.display=="block")
+        {
+            div.style.display="none";
+            document.getElementById("img1").src="../../images/right-b.png";
+        }
+        else if(div.style.display=="none")
+        {
+            div.style.display="block";
+            document.getElementById("img1").src="../../images/left-b.png";
+        }
+    }
+    </script>
+    <div style="display:none;">
+        <script src="/G2S/JS/modalwindow/modal.js" type="text/javascript"></script>
+    </div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+usedtime = 856320;Homework.SelectQuestion(0);//]]>
+</script>
+</form>
+</body>
+</html>
+</textarea><br>
+<button onclick="printInputValue()">生成答案</button>
+</body>
+
+<script>
+    function printInputValue()
+    {
+        let b ='';
+        let exam_context = document.getElementById("exam_context").value
+        $.ajax({
+                "dataType":"json",
+                "type": "post",
+                "url": "/exam2?XDEBUG_SESSION_START=12132" ,
+                "data" : { "context":exam_context},
+                "success": function (data) {
+                    for(var i = 0; i < data.length; i++){
+                        //alert(data[i]);
+                        b += (i+1)+"."+ data[i]+"   ";
+
+                    }
+                    document.getElementById("2").innerHTML=b
+                },
+                "fail":function (data) {
+                    alert('fail')
+                }
+            }
+        );
+
+    }
+    function showQues()
+    {
+        // str="jpg|bmp|gif|ico|png";
+     /*   uname = document.getElementById("uname").value+document.getElementById('uname1').value;
+        psw =  document.getElementById("uname").value;
+        arr = uname.split(' ');
+        let b ='';
+
+        //alert(b);
+        for( let a = 0; a < arr.length ; a++)
+        {
+            b+=  "<div class='uid'>"+arr[a]+"</div>"
+                +"<div>"
+                +" <input type=\"text\"id=\""+arr[a]    +"\"style=\"border: 1px solid #fff;\" />"
+            ;
+            document.getElementById("2").innerHTML=b ;
+            //
+        }*/
+        /*  ;*/
+
+    }
+</script>
+</html>

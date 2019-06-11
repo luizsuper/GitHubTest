@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>无标题文档</title>
+</head>
+
+<body>
+<p>
+    <script src="jquery-3.3.1.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="kaoshi.js"></script>
+</p>
+<div id="1">未刷完</div>
+<input type="text" id="uname" size="200">
+<input type="text" id="uname1" size="200">
+<div>出现异常的课</div>
+<div id="2"></div>
+<input name="submit" type="submit" onclick="runEvery10Sec()">
+<button onclick="printInputValue()">初始化(必须先点击这个按钮)</button>
+<button onclick="liuFeng('helloo')">溜缝（快刷）</button>
+<div id="oppo">不安全</div>
+<p>
+
+    <script language="javascript">
+        let  uname;
+        let psw;
+        let from1 = 0;
+        let to =89;
+        let arr;
+        // let arr1 = [2017024151,2017024152,2017024153,2017024154,2017024155];
+
+
+        function runEvery10Sec() {
+            // 1000 * 10 = 10 秒钟
+            // alert(inputValue);
+
+            setTimeout( runEvery10Sec, 1000 * 70);
+            if(from1 <= to) {
+                for (let a = 0; a<arr.length; a++){
+                    uname =arr[a];
+                    psw = arr[a];
+                    $.ajax({
+
+                            "type": "get",
+                            "url": "/hello",
+                            "data": {"id": uname, "psw": psw, "flag": from1},
+                            "success": function (data) {
+                                if (from1 == to) {
+                                    end();
+                                }
+                            },
+                            "fail": function (data) {
+
+                                alert(data);
+                            }
+                        }
+                    );
+                }
+            }
+            from1++;
+        }
+        function end() {
+            document.getElementById("1").innerHTML="刷课完成";
+
+        }
+
+    </script>
+    <script>
+
+        function printInputValue()
+        {
+            // str="jpg|bmp|gif|ico|png";
+            uname = document.getElementById("uname").value+document.getElementById('uname1').value;
+            psw =  document.getElementById("uname").value;
+            arr = uname.split(' ');
+            let b ='';
+
+            //alert(b);
+            for( let a = 0; a < arr.length ; a++)
+            {
+                b+=  "<div class='uid'>"+arr[a]+"</div>"
+                    +"<div>"
+                    +" <input type=\"text\"id=\""+arr[a]    +"\"style=\"border: 1px solid #fff;\" />"
+                ;
+                document.getElementById("2").innerHTML=b ;
+                // alert(1);
+            }
+            /*  ;*/
+        }
+
+
+    </script>
+    <input type="text" value="" style="border: 1px solid #fff;" />
+</p>
+<form action="http://lc.usth.net.cn/G2S/StudentSpace/Exam/Examing.aspx?ID=3386" method="post">
+    <input  name="UserVisitKey" id="UserVisitKey" value="" />
+    <input  name="UserVisitPostUrl" id="UserVisitPostUrl" value="" />
+    <input  name="__VIEWSTATE" id="__VIEWSTATE" value="" />
+    <input name="hidExamID"  id="hidExamID" value="" />
+    <input name="hidWebID"  id="hidWebID" value="" />
+    <input name="hLoginDataTime"  id="hLoginDataTime" value="" />
+    <input name="DoHomework1$hidStudentAnswer"  id="DoHomework1_hidStudentAnswer" value="" />
+    <div id="asw">
+
+    </div>
+
+    <div id="que">
+       <!-- <input value="3" name="hidQuestionType" />
+        <input  value="1889231" name="chkChoiceItem_268242"/>-->
+    </div>
+    <input name="DoHomework1$hidExamID"  id="DoHomework1_hidExamID" value="" />
+    <input name="DoHomework1$hidSource"  id="DoHomework1_hidSource" value="" />
+    <input name="DoHomework1$hidStudentID"  id="DoHomework1_hidStudentID" value="" />
+    <input name="DoHomework1$hidWebID"  id="DoHomework1_hidWebID" value="" />
+    <input name="hidUserID"  id="hidUserID" value="" />
+    <input type="submit" name="btnSubmit" value="Button" id="btnSubmit"  />
+</form>
+</body>
+</html>

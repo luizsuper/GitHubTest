@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+</head>
+
+<body>
+<p>
+    <script src="jquery-3.3.1.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+
+</p>
+<div id="1">未刷完</div>
+<input type="text" id="uname" size="200">
+<input type="text" id="uname1" size="200">
+<div>出现异常的课</div>
+<div id="2"></div>
+<input name="submit" type="submit" onclick="runEvery10Sec()">
+<button onclick="printInputValue()">初始化(必须先点击这个按钮)</button>
+<button onclick="liuFeng('helloo')">溜缝（快刷）</button>
+<div id="oppo">不安全</div>
+<p>
+
+    <script language="javascript">
+        let  uname;
+        let psw;
+        let from1 = 0;
+        let to =89;
+        let arr;
+        // let arr1 = [2017024151,2017024152,2017024153,2017024154,2017024155];
+        function liuFeng() {
+            //setTimeout( liuFeng, 1000 * 70);
+
+            for(let a = 0 ;a<arr.length;a++){
+                uname =arr[a];
+                psw = arr[a];
+                $.ajax({
+                        "dataType":"json",
+                        "type": "get",
+                        "url": "/ckx",
+                        "data" : { "username" : uname,"psw":psw},
+                        "success": function (data) {
+
+                        },
+                        "fail":function (data) {
+                            alert('fail')
+                        }
+                    }
+                );
+                if( a== arr.length)
+                {
+                    end();
+                }
+            }
+        }
+
+
+        function runEvery10Sec() {
+            // 1000 * 10 = 10 秒钟
+            // alert(inputValue);
+
+            setTimeout( runEvery10Sec, 1000 * 70);
+            if(from1 <= to) {
+                for (let a = 0; a<arr.length; a++){
+                    uname =arr[a];
+                    psw = arr[a];
+                    $.ajax({
+
+                            "type": "get",
+                            "url": "/hello",
+                            "data": {"id": uname, "psw": psw, "flag": from1},
+                            "success": function (data) {
+                              alert('success');
+                            },
+                            "fail": function (data) {
+
+                                alert(data);
+                            }
+                        }
+                    );
+                }
+            }
+            from1++;
+        }
+        function end() {
+            document.getElementById("1").innerHTML="刷课完成";
+
+        }
+
+    </script>
+    <script>
+
+        function printInputValue()
+        {
+            // str="jpg|bmp|gif|ico|png";
+            uname = document.getElementById("uname").value+document.getElementById('uname1').value;
+            psw =  document.getElementById("uname").value;
+            arr = uname.split(' ');
+            let b ='';
+
+            //alert(b);
+            for( let a = 0; a < arr.length ; a++)
+            {
+                b+=  "<div class='uid'>"+arr[a]+"</div>"
+                    +"<div>"
+                    +" <input type=\"text\"id=\""+arr[a]    +"\"style=\"border: 1px solid #fff;\" />"
+                ;
+                document.getElementById("2").innerHTML=b ;
+                // alert(1);
+            }
+            /*  ;*/
+        }
+
+
+    </script>
+    <input type="text" value="" style="border: 1px solid #fff;" />
+</p>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>卓越课程中心</title><meta name="Keywords" content="卓越,卓越课程中心,课程中心,教育,教学,网络课程,教学平台,ACC"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">
+    html,body{width:100%;height:100%;overflow-x:hidden;}
+    body{font-size:12px;text-align:center;margin:0px;line-height:200%;background:url(css/blue/bg.jpg) 0 0 repeat-x;color:#646464;}
+    font,table,textarea{line-height:200%;font-size:12px;}
+    img{border:0px;}
+    select,input,textarea{color:#5D5D5D;}
+    ul,form,p{margin:0px;padding:0px;list-style:none;}
+    a{text-decoration:none;color:#646464;}
+    a:hover{text-decoration:underline;}
+    div.center{margin:0 auto;width:1000px;text-align:left;}
+    .left{float:left;}
+    .right{float:right;}
+    .clear{clear:both;font-size:0px;line-height:0px;}
+    .no-border{border:0px !important;}
+    .underline{text-decoration:underline;}
+
+    .d,.detail,.gray{color:#AAAAAA;}
+
+    .top-line,.bottom-line{margin:0px 8px;}
+    .dotBtn{background:url(css/dotBtn.png) no-repeat;width:10px;height:10px;display:inline-block;font-size:0px;margin-right:3px;position:relative;top:1px;top:3px\9;width:12px\9;height:12px\9;}
+    .tools{background:url(css/tools.png) no-repeat;width:16px;height:16px;}
+    .login-txt{width:130px;border:0px;}
+
+    .menu-bar{height:40px;}
+    .menu-bottom-line{height:10px;line-height:0px;}
+    .main-menu{list-style:none;}
+    .main-menu-item{float:left;}
+    .main-nav{color:#ffffff;font-weight:bold;line-height:40px;text-align:center;display:inline-block;width:90px;}
+    .main-menu-item .container{position:absolute;width:90px;height:0px;display:inline-block;margin-top:40px;z-index:1000;margin-left:-90px;}
+    .sub-nav{color:#ffffff;width:90px; height:30px;display:block;line-height:30px;text-align:center;}
+    .main-menu-item .sub-menu{margin-top:-99999px;}
+    .main-menu-item.hover .sub-menu{margin-top:0px;}
+    .search{background:#EBEBEB;border:0px;padding:0px;margin:0px;height:20px;}
+    .search-btn{border:0px;height:20px;width:20px;padding:0px;}
+    .main-nav:hover,.sub-nav:hover{color:#ffffff;}
+
+    .btn{background:url(css/blue/btn.jpg) no-repeat;display:inline-block;border:0px;width:60px;height:20px;}
+    .logo{background:url(css/blue/logo.jpg) no-repeat;width:315px;height:100px;display:inline-block;}
+    .top-info{background:url(css/blue/top-area.jpg) no-repeat;width:300px;height:100px;}
+    .i-pape{background:url(css/blue/innerBtn.png) no-repeat;display:inline-block;width:16px;height:16px;font-size:0px;margin:0px 8px;}
+    .i-dot{background:url(css/blue/innerBtn.png) no-repeat -287px;}
+    ul.i-list li{float:left;background:url(css/blue/innerBtn.png) no-repeat -287px 8px;text-indent:16px;}
+    .i-container{margin-top:20px;}
+    .i-head{background:#ececec;padding:2px 5px ;border:#b8b8b8 1px solid;font-weight:bold;}
+    .i-body{background:#ffffff;padding:5px;border:#b8b8b8 1px solid;border-top:0px;}
+    .sh{text-decoration:underline;}
+    .unitybtn {background:url(css/blue/btn1.jpg) ; display:inline-block;border:0px;width:120px;height:20px;}
+    .ClearstrText{overflow: hidden;text-overflow: ellipsis;-o-text-overflow: ellipsis;white-space: nowrap;} /*单行*/
+
+    body{background-color:#E8F3FB;}
+    .btn{color:#013B53;}
+    .top-info,.top-info a{color:#9EEDFC;}
+    .dotBtn-cur{border:1px solid #78CADF;top:2px;}
+    .login-txt{background:#013B53;color:#78CADF;}
+
+    .menu-bar{background:#005478;}
+    .main-menu-item{border-right:1px solid #06678B;}
+    .menu-bottom-line{border-top:1px solid #DFF316;background:#B9D020;}
+    .main-menu-item-cur,.main-menu-item.hover{background:#C8D73A;}
+    .sub-menu-item a{background:#CBD83D;border-top:1px solid #DFF316;}
+    .sub-menu-item a:hover{background:#0974A2;}
+    .search-btn{background:#048ABD;}
+
+    .t,a:hover,.sh{color:#048ABD;}
+    .copy-right,.copy-right a{color:#3CA2CA;}
+</style><style type="text/css">
+    .t{margin-right:5px;}
+    table.sys th{text-align:left;color:#ffffff;font-weight:lighter;}
+    table.sys td{border-bottom:1px solid #D2D2D2;}
+    .area-left-website table.sys td{border-bottom:1px solid #ffffff;}
+    .first-th, .first-td{text-indent:8px;}
+
+    .area-left-1,.area-left-3{background:#ffffff;}
+    .area-right-1,.area-right-2,.area-right-3{background:#EBEBEB;}
+    .area-left-2{background:#EBEBEB;}
+    .area-middle-2{background:#DCDCDC;}
+
+
+
+
+    .hot-btn{background:url(css/blue/tab.png)  -120px 0px no-repeat;color:#A9A9A9; width:120px; line-height:30px; height:30px;text-align:center;font-weight:bold; display:inline-block;margin-right:10px;}
+    .hot-btn.hover,.hot-btn-cur{background-position:0px 0px;}
+    .frame-hot{display:inline-block;width:70px;height:70px;background:url(css/frame.jpg) no-repeat;}
+    .frame-news{display:inline-block;width:160px;height:120px;background:#ffffff;border:1px solid #EBEBEB;}
+    .frame-course{display:block;width:268px;height:48px;border:1px solid #ffffff;width:270px\9;}
+    .hot-image{display:block;margin:3px;width:63px;height:63px;}
+    .news-image{display:block;margin:1px;width:159px;height:119px;}
+    .course-image{display:block;margin:2px;}
+    .hot-item{padding:8px 0px; border-bottom:1px solid #F0F0F0;}
+
+
+    .title{font-size:14px;font-weight:bold;float:left;line-height:24px;}
+    .more{color:#5D5D5D;font-weight:bold;float:right;height:24px;position:relative;top:3px;}
+    .content-bar{height:10px;line-height:0px;font-size:0px;display:block;}
+
+
+    .share{background:url(css/share.png) no-repeat; display:inline-block;font-size:0px;height:18px;width:18px;margin:0px 3px;position:relative;top:1px; left:-3px;top:3px\9;}
+
+    .hot-btn.hover,.hot-btn-cur{color:#0974A2;}
+
+    .title{color:#048ABD;}
+    table.sys th{background:#048ABD;}
+    .area-right-news .title,.area-right-result .title{color:#013B53;}
+    .area-right-course,.area-right-3{background:#76AEC6;}
+    .area-right-help .t{color:#013B53;}
+    .area-right-help .title,.area-right-help .more,.area-right-help .m{color:#ffffff;}
+</style></head><body><div class="center page-top" style="height:100px;"><a href="Index.aspx" class="logo left" target="_self"></a><div class="top-info right"><div style="margin:10PX;"><div class="left" style="width:30px;margin-top:5px;"><div style="background:url(css/cn.gif) no-repeat; width:15px;float:left;display:black;cursor:pointer;" title="中文" onclick="javascript:GetLanguage('zh-cn')">&nbsp;</div><div style="background:url(css/en.gif) no-repeat; width:15px;float:left; display:black;cursor:pointer;" title="English" onclick="javascript:GetLanguage('en-us')">&nbsp;</div></div><div class="right"><div>
+    访问量：2006588<font class="top-line">|</font><a href="javascript:void(0);" class="underline" onclick="javascript:favority();">收藏</a><font class="top-line">|</font><span><a href="javascript:void(0);" class="dotBtn dotBtn-cur" onclick="skin(this,'blue');" style="background-position:1px 1px;"></a><a href="javascript:void(0);" class="dotBtn" onclick="skin(this,'red');" style="background-position:-13px 1px;"></a><a href="javascript:void(0);" class="dotBtn" onclick="skin(this,'green');" style="background-position:-27px 1px;"></a><a href="javascript:void(0);" class="dotBtn" onclick="skin(this,'purple');" style="background-position:-41px 1px;"></a><a href="javascript:void(0);" class="dotBtn" onclick="skin(this,'brown');" style="background-position:-55px 1px;margin-right:0px;"></a></span></div></div><div class="clear"></div><div style="margin-top:10px;"><div id="login" class="login"><form onsubmit="return false;"><input id="LoginName" name="LoginName" type="text" value="用户名" class="login-txt left" onfocus="clearDefault(this)" onblur="setDefault(this)"><input id="Password" name="Password" type="password" value="password" class="login-txt right" onfocus="clearDefault(this)" onblur="setDefault(this)"><div class="clear"></div><input type="button" onclick="login(this);" value="登录" class="btn right" style="margin-top:10px;*margin-top:0px;cursor: pointer;"><a onclick="javascript: window.open('GetUserPassword.aspx');" value="" class="hlFindPwd left" style="margin-top:10px;*margin-top:0px;cursor: pointer;">忘记密码了?</a><div class="clear"></div></form></div></div></div></div><div class="clear"></div></div><div class="center"><div class="menu-bar"><ul class="main-menu"><li class="main-menu-item main-menu-item-cur" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="Index.aspx" target="_self">首页</a></li><li class="main-menu-item" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="TeachOrganise.aspx" target="_self">教学组织</a></li><li class="main-menu-item" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="SpecialtySet.aspx" target="_self">专业设置</a></li><li class="main-menu-item" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="#" target="_self">课程资源</a><div class="container left"><ul class="sub-menu"><li class="sub-menu-item"><a class="sub-nav" href="CourseCommend.aspx" target="_self">推荐课程</a></li><li class="sub-menu-item"><a class="sub-nav" href="CourseAll.aspx" target="_self">课程总览</a></li><li class="sub-menu-item"><a class="sub-nav" href="CourseExcellence.aspx" target="_self">精品课程</a></li><li class="sub-menu-item"><a class="sub-nav" href="Content.aspx?ID=2000100" target="_self">课程介绍</a></li><li class="sub-menu-item"><a class="sub-nav" href="CourseTypeSet.aspx?NO=2000045" target="_blank">通识课程</a></li><li class="sub-menu-item"><a class="sub-nav" href="CloudClass.aspx" target="_blank">云课堂</a></li></ul></div></li><li class="main-menu-item" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="#" target="_self">师资队伍</a><div class="container left"><ul class="sub-menu"><li class="sub-menu-item"><a class="sub-nav" href="TeacherOffice.aspx" target="_self">任课教师</a></li><li class="sub-menu-item"><a class="sub-nav" href="TeacherFamous.aspx" target="_self">教学名师</a></li></ul></div></li><li class="main-menu-item" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="TeachResult.aspx" target="_self">教学成果</a></li><li class="main-menu-item" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="#" target="_self">教学服务</a><div class="container left"><ul class="sub-menu"><li class="sub-menu-item"><a class="sub-nav" href="New.aspx" target="_self">新闻公告</a></li><li class="sub-menu-item"><a class="sub-nav" href="TeachFile.aspx" target="_self">教学文件</a></li><li class="sub-menu-item"><a class="sub-nav" href="Help.aspx" target="_self">使用指南</a></li><li class="sub-menu-item"><a class="sub-nav" href="CommonNet.aspx" target="_self">友情链接</a></li></ul></div></li><li class="main-menu-item" onmouseover="show2(this, mOver)" onmouseout="hidden2(this, mOut)"><a class="main-nav left" href="ResourceIndex.aspx" target="_self">资源中心</a></li></ul><div class="right" style="margin:10px 10px 0px 0px;"><form action="OrganiseSearch.aspx" method="get" target="_blank"><select class="left search" onchange="searchChange(this)"><option value="OrganiseSearch.aspx">组织结构</option><option value="SpecialtySearch.aspx">专业</option><option value="TeacherSearch.aspx">教师</option><option value="CourseSearch.aspx">课程</option><option value="WebsiteSearch.aspx">课程网站</option><option value="KeyWordPointSearch.aspx">关键字</option><option value="KnowledgePointSearch.aspx">知识点</option></select><input style="width:150px;margin-left:5px;" class="search" name="key" type="text"><input type="submit" class="search-btn" value="" style="background-image:url(css/search.png);background-repeat:no-repeat;background-position:3px 3px;position:relative;top:1px;top:0px\9;"><div clear="both"></div></form></div><div class="clear"></div></div></div><div class="center"><div class="menu-bottom-line"></div></div><div class="center" style="position:relative;left:1px\9;"><table cellspadding="0" style="width:1000px; display:block;border:0px;" cellspacing="0" border="0"><tbody><tr><td class="area-left-1" style="padding:0px;width:700px;vertical-align:top;height:330px;overflow:hidden;"><div class="area-left-hot" style="margin-top:10px;"><div style="padding:10px; padding-bottom:0px;"><span><a class="hot-btn hot-btn-cur" onclick="javascript:tab(this,sh);" for="course" href="javascript:void(0);">热门课程</a><a class="hot-btn" onclick="javascript:tab(this,sh);" for="person" href="javascript:void(0);">热门人物</a><a class="hot-btn" onclick="javascript:tab(this,sh);" for="video" href="javascript:void(0);">热门视频</a></span><div id="course"><div class="hot-item"><a class="frame-hot left" href="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=62" target="_blank"><img class="hot-image" src="../Template/System/course_template_023/Template.gif"></a><div class="right" style="width:600px;"><span class="left"><a href="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=62" class="t" target="_blank">工程流体力学</a><font style="margin-right:5px;">赵存友</font><font class="t">点击</font><font class="d">
+                                (38550)
+                              </font></span><span class="right" _link="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=62" _title="工程流体力学" _source="工程流体力学" _site=""><a onclick="share2(this);" title="开心网" href="javascript:void(0);" class="share" _href="http://www.kaixin001.com/repaste/share.php?rurl=(link)&amp;rcontent=(link)&amp;rtitle=(title)" style="background-position:2px 0px;"></a><a onclick="share2(this);" title="人人网" href="javascript:void(0);" class="share" _href="http://share.renren.com/share/buttonshare?link=(link)&amp;title=(title)" style="background-position:-18px 0px;"></a><a onclick="share2(this);" title="豆瓣网" href="javascript:void(0);" class="share" _href="http://www.douban.com/recommend/?url=(link)&amp;title=(title)" style="background-position:-40px 0px;"></a><a onclick="share2(this);" title="新浪微博" href="javascript:void(0);" class="share" _href="http://v.t.sina.com.cn/share/share.php?url=(link)&amp;title=(title)" style="background-position:-62px 0px;"></a><a onclick="share2(this);" title="网易微博" href="javascript:void(0);" class="share" _href="http://t.163.com/article/user/checkLogin.do?link=(link)&amp;source=(source)&amp;info=(title) (link)" style="background-position:-80px 0px;"></a><a onclick="share2(this);" title="腾讯微博" href="javascript:void(0);" class="share" _href="http://v.t.qq.com/share/share.php?title=(title)&amp;url=(link)&amp;site=(site)" style="background-position:-103px 0px;"></a><a onclick="mail2(this);" title="邮件" class="share" href="javascript:void(0);" style="background-position:-127px 0px;" target="_blank"></a></span><div class="clear"></div><div style="height:48px;" class="detail" title="流体力学是现代科学技术中历史悠久、发展迅速、基础性很强、应用性很广的学科。工程流体力学是流体力学在工程中应用而形成的学科。工程流体力学网站为广大同学提供各专业教学大纲、丰富的授课视频资源、课件、教案、习题。同时提供网上交流和答疑并且网上提交作业。为广大同学学习该课程提供课后保障。">流体力学是现代科学技术中历史悠久、发展迅速、基础性很强、应用性很广的学科。工程流体力学是流体力学在工程中应用而形成的学科。工程流体力学网站为广大同学提供各专...
+</div></div><div class="clear"></div></div><div class="hot-item"><a class="frame-hot left" href="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=165" target="_blank"><img class="hot-image" src="../Template/System/course_template_046/Template.gif"></a><div class="right" style="width:600px;"><span class="left"><a href="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=165" class="t" target="_blank">健康教育</a><font style="margin-right:5px;">顾晓红</font><font class="t">点击</font><font class="d">
+                                (48960)
+                              </font></span><span class="right" _link="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=165" _title="健康教育" _source="健康教育" _site=""><a onclick="share2(this);" title="开心网" href="javascript:void(0);" class="share" _href="http://www.kaixin001.com/repaste/share.php?rurl=(link)&amp;rcontent=(link)&amp;rtitle=(title)" style="background-position:2px 0px;"></a><a onclick="share2(this);" title="人人网" href="javascript:void(0);" class="share" _href="http://share.renren.com/share/buttonshare?link=(link)&amp;title=(title)" style="background-position:-18px 0px;"></a><a onclick="share2(this);" title="豆瓣网" href="javascript:void(0);" class="share" _href="http://www.douban.com/recommend/?url=(link)&amp;title=(title)" style="background-position:-40px 0px;"></a><a onclick="share2(this);" title="新浪微博" href="javascript:void(0);" class="share" _href="http://v.t.sina.com.cn/share/share.php?url=(link)&amp;title=(title)" style="background-position:-62px 0px;"></a><a onclick="share2(this);" title="网易微博" href="javascript:void(0);" class="share" _href="http://t.163.com/article/user/checkLogin.do?link=(link)&amp;source=(source)&amp;info=(title) (link)" style="background-position:-80px 0px;"></a><a onclick="share2(this);" title="腾讯微博" href="javascript:void(0);" class="share" _href="http://v.t.qq.com/share/share.php?title=(title)&amp;url=(link)&amp;site=(site)" style="background-position:-103px 0px;"></a><a onclick="mail2(this);" title="邮件" class="share" href="javascript:void(0);" style="background-position:-127px 0px;" target="_blank"></a></span><div class="clear"></div><div style="height:48px;" class="detail">校公共课</div></div><div class="clear"></div></div><div class="hot-item" style="border:0px;"><a class="frame-hot left" href="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=315" target="_blank"><img class="hot-image" src="../Template/System/course_template_009/Template.gif"></a><div class="right" style="width:600px;"><span class="left"><a href="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=315" class="t" target="_blank">大学生创新创业导论</a><font style="margin-right:5px;">刘国艳</font><font class="t">点击</font><font class="d">
+                                (221859)
+                              </font></span><span class="right" _link="
+                          ../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=315" _title="大学生创新创业导论" _source="大学生创新创业导论" _site=""><a onclick="share2(this);" title="开心网" href="javascript:void(0);" class="share" _href="http://www.kaixin001.com/repaste/share.php?rurl=(link)&amp;rcontent=(link)&amp;rtitle=(title)" style="background-position:2px 0px;"></a><a onclick="share2(this);" title="人人网" href="javascript:void(0);" class="share" _href="http://share.renren.com/share/buttonshare?link=(link)&amp;title=(title)" style="background-position:-18px 0px;"></a><a onclick="share2(this);" title="豆瓣网" href="javascript:void(0);" class="share" _href="http://www.douban.com/recommend/?url=(link)&amp;title=(title)" style="background-position:-40px 0px;"></a><a onclick="share2(this);" title="新浪微博" href="javascript:void(0);" class="share" _href="http://v.t.sina.com.cn/share/share.php?url=(link)&amp;title=(title)" style="background-position:-62px 0px;"></a><a onclick="share2(this);" title="网易微博" href="javascript:void(0);" class="share" _href="http://t.163.com/article/user/checkLogin.do?link=(link)&amp;source=(source)&amp;info=(title) (link)" style="background-position:-80px 0px;"></a><a onclick="share2(this);" title="腾讯微博" href="javascript:void(0);" class="share" _href="http://v.t.qq.com/share/share.php?title=(title)&amp;url=(link)&amp;site=(site)" style="background-position:-103px 0px;"></a><a onclick="mail2(this);" title="邮件" class="share" href="javascript:void(0);" style="background-position:-127px 0px;" target="_blank"></a></span><div class="clear"></div><div style="height:48px;" class="detail" title="本课程重点放在对学生创业素质的培养和创业基础知识的介绍，同时指导学生以团队形式开展一些项目化的实践训练，旨在引导学生尽早树立创业意识，学会创新性思维，提升精神心理品质，了解企业创建和运行管理的基础知识，提升实践创新能力。">本课程重点放在对学生创业素质的培养和创业基础知识的介绍，同时指导学生以团队形式开展一些项目化的实践训练，旨在引导学生尽早树立创业意识，学会创新性思维，提升精...
+</div></div><div class="clear"></div></div></div><div id="person" style="display:none;visibility:hidden;"></div><div id="video" style="display:none;visibility:hidden;"></div><div class="content-bar"></div></div></div></td><td class="area-right-1" style="padding:0px;width:300px;vertical-align:top;height:330px;overflow:hidden;"><div class="area-right-news"><div style="padding:10px;"><div class="content-bar"></div><font class="title">新闻公告</font><div class="clear"></div><div id="divImportNews" style="display:none;"><a class="frame-news left" href="NewDetail.aspx?RefID=" target="_blank"><span class="news-image" style="no-repeat;"><img style="width:160px; height:120px;" src="http://222.171.146.27:80/upload/"></span></a><span class="right" style="width:115px;"><a style="display:block;font-weight:bold; " class="t" href="NewDetail.aspx?RefID=" target="_blank;"></a><font class="m" style="display:block;"></font></span></div><div class="clear"></div><table class="sys" cellspadding="0" style="width:280px;display:block;margin-top:5px;" cellspacing="0" border="0"><col width="210"><col width="60"><tbody><tr><td><a class="t" href="NewDetail.aspx?RefID=22" target="_blank">app上线通知</a></td><td class="m">2018-04-19</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=21" target="_blank">录播教室课表网站上线</a></td><td class="m">2016-10-08</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=20" target="_blank">课程中心APP安卓版上线</a></td><td class="m">2016-04-13</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=17" target="_blank">数学建模课程可以注册使用。</a></td><td class="m">2015-08-31</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=10" target="_blank">我校召开2015年安全稳定工作会议</a></td><td class="m">2015-05-16</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=11" target="_blank" title="我校举办第八届“爱传心语·手舞天籁”手语汇演">我校举办第八届“爱传心语·手舞...
+</a></td><td class="m">2015-05-16</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=12" target="_blank" title="我校启动第十三届“5.25”心理健康教育宣传月暨第四届学生公寓文化节活动">我校启动第十三届“5.25”心...
+</a></td><td class="m">2015-05-16</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=13" target="_blank" title="我校举办大型模拟求职互动活动“现场职播”">我校举办大型模拟求职互动活动“...
+</a></td><td class="m">2015-05-16</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=14" target="_blank" title="我校学生在第二届全国高校物联网应用创新大赛中喜获佳绩">我校学生在第二届全国高校物联网...
+</a></td><td class="m">2015-05-16</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=15" target="_blank" title="校党委书记申林参加第七届“高校管理者论坛”">校党委书记申林参加第七届“高校...
+</a></td><td class="m">2015-05-16</td></tr><tr><td><a class="t" href="NewDetail.aspx?RefID=16" target="_blank" title="我校四名教师在省大学生数学建模竞赛经验交流暨颁奖会上受到表彰">我校四名教师在省大学生数学建模...
+</a></td><td class="m">2015-05-16</td></tr></tbody></table><a class="more" href="New.aspx" target="_blank">...更多</a><div class="clear"></div></div></div></td></tr></tbody></table><table cellspadding="0" style="width:1000px; display:block;margin-top:-10px;" cellspacing="0" border="0"><tbody><tr><td class="area-left-2" style="padding:0px;width:350px;vertical-align:top;"><div class="area-left-specialty"><div style="padding:10px;"><font class="title">专业设置</font><a class="more" href="SpecialtySet.aspx" target="_blank">...更多</a><div class="clear"></div><table class="sys" cellspadding="0" style="width:330px; display:block;" cellspacing="0" border="0"><col width="145"><col width="140"><col width="45"><tbody><tr><th class="first-th">专业</th><th>所属机构</th><th>点击</th></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=53&amp;title=物联网工程" class="t" target="_blank">物联网工程</a></td><td>计算机与信息工程学院</td><td style="text-align:right;"><font style="margin-right:5px;">1435</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=56&amp;title=土木工程" class="t" target="_blank">土木工程</a></td><td>建筑工程学院</td><td style="text-align:right;"><font style="margin-right:5px;">1333</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=5&amp;title=电信大类" class="t" target="_blank">电信大类</a></td><td>电子与信息工程学院</td><td style="text-align:right;"><font style="margin-right:5px;">1293</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=39&amp;title=机械设计制造及其自动化" class="t" target="_blank" title="机械设计制造及其自动化">机械设计制造及其...
+</a></td><td>机械工程学院</td><td style="text-align:right;"><font style="margin-right:5px;">1199</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=34&amp;title=采矿工程" class="t" target="_blank">采矿工程</a></td><td>矿业工程学院</td><td style="text-align:right;"><font style="margin-right:5px;">1077</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=62&amp;title=化学工程与工艺" class="t" target="_blank">化学工程与工艺</a></td><td>环境与化工学院</td><td style="text-align:right;"><font style="margin-right:5px;">887</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=20&amp;title=信息与计算科学" class="t" target="_blank">信息与计算科学</a></td><td>计算机与信息工程学院</td><td style="text-align:right;"><font style="margin-right:5px;">663</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=22&amp;title=应用化学" class="t" target="_blank">应用化学</a></td><td>环境与化工学院</td><td style="text-align:right;"><font style="margin-right:5px;">638</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=41&amp;title=工业设计" class="t" target="_blank">工业设计</a></td><td>机械工程学院</td><td style="text-align:right;"><font style="margin-right:5px;">541</font></td></tr><tr><td class="first-td"><a href="SpecialtyDetail.aspx?RefID=19&amp;title=数学与应用数学" class="t" target="_blank">数学与应用数学</a></td><td>理学院</td><td style="text-align:right;"><font style="margin-right:5px;">497</font></td></tr></tbody></table></div></div></td><td class="area-middle-2" style="padding:0px;width:350px;vertical-align:top;"><div class="area-left-website"><div style="padding:10px;"><font class="title">课程网站点击排行</font><a class="more" href="WebsiteRank.aspx" target="_blank">...更多</a><div class="clear"></div><table class="sys" cellspadding="0" style="width:330px; display:block;" cellspacing="0" border="0"><col width="195"><col width="90"><col width="45"><tbody><tr><th class="first-th">网站</th><th>教师</th><th>点击</th></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=315" class="t" target="_blank">大学生创新创业导论</a></td><td>刘国艳</td><td style="text-align:right;"><font style="margin-right:5px;">221859</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=82" class="t" target="_blank">数学建模（公共课）</a></td><td>刘照升</td><td style="text-align:right;"><font style="margin-right:5px;">85343</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=245" class="t" target="_blank">大学物理精品资源共享课</a></td><td>姜洪喜</td><td style="text-align:right;"><font style="margin-right:5px;">65572</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=134" class="t" target="_blank">材料力学</a></td><td>于月民</td><td style="text-align:right;"><font style="margin-right:5px;">57642</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=165" class="t" target="_blank">健康教育</a></td><td>顾晓红</td><td style="text-align:right;"><font style="margin-right:5px;">48960</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=28" class="t" target="_blank">立体构成</a></td><td>赵宏梅</td><td style="text-align:right;"><font style="margin-right:5px;">45011</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=279" class="t" target="_blank">高等数学重修网络课程</a></td><td>朱捷</td><td style="text-align:right;"><font style="margin-right:5px;">42574</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=62" class="t" target="_blank">工程流体力学</a></td><td>赵存友</td><td style="text-align:right;"><font style="margin-right:5px;">38550</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=143" class="t" target="_blank">线性代数</a></td><td>杜红</td><td style="text-align:right;"><font style="margin-right:5px;">21056</font></td></tr><tr><td class="first-td"><a href="../Template/View.aspx?action=view&amp;courseType=0&amp;courseId=32" class="t" target="_blank">成功心理学</a></td><td>李一鸣</td><td style="text-align:right;"><font style="margin-right:5px;">18605</font></td></tr></tbody></table></div></div></td><td class="area-right-2" style="padding:0px;width:300px;vertical-align:top;"><div class="area-right-course"><div style="padding:15px;"><a class="frame-course" href="CourseExcellence.aspx" target="_blank"><img class="course-image" src="css/jpkc.gif"></a><a class="frame-course" href="CourseCommend.aspx" target="_blank" style="margin-top:10px;"><img class="course-image" src="css/tjkc.gif"></a></div></div><div class="area-right-result"><div style="padding:10px;padding-top:0px;"><div class="content-bar"></div><font class="title">教学成果</font><div class="clear"></div><table class="sys" cellspadding="0" style="width:280px;display:block;margin-top:5px;" cellspacing="0" border="0"><col width="220"><col width="30"></table><a class="more" href="TeachResult.aspx" target="_blank">...更多</a></div></div></td></tr></tbody></table><table cellspadding="0" style="width:1000px; display:block;" cellspacing="0" border="0"><tbody><tr><td class="area-left-3" style="padding:0px;width:700px;vertical-align:top;"><div class="area-left-school"><div style="padding:0px 10px 10px 10px;"><div class="content-bar"></div><font class="title">学校介绍</font><a class="more" href="SchooProfile.aspx" target="_blank">...详细</a><div class="clear"></div><div id="SchoolBrief" class="d" style="width:680px;height:192px;overflow:hidden;"><style>
+    p{ color:#646464
+    }
+</style>
+    <div>
+        <p><img style="HEIGHT: 99px; WIDTH: 100px" alt="" src="/G2S/eWebEditor/uploadfile/20160421112227001.jpg" width="221" hspace="12" height="218" align="left"><a id="OLE_LINK1" name="OLE_LINK1"></a>&nbsp;　　黑龙江科技大学，坐落在北国冰城哈尔滨市松花江畔、是黑龙江“十二五”期间重点建设的特色应用型本科高校，是黑龙江、吉林乃至内蒙古地区唯一一所以矿业工程为特色的高校，因坐落早松花江北岸，故有“江畔朝阳”一说。</p>
+        <p>　　学校的前身是1947年在鸡西建立的东北第一所煤矿工人学校，几经易名，1981年更名为黑龙江矿业学院，隶属于原国家煤炭工业部，1998年高等教育管理体制改革后，实行中央与地方共建，以黑龙江省管理为主；2000年经教育部批准更名为黑龙江科技学院，2001年在哈尔滨建设新校区，2003年学校主体由鸡西市迁入哈尔滨市。2013年4月18日，经教育部批准更名为黑龙江科技大学。</p>
+        <p>　　学校在60多年的办学历程中，学校始终践行“厚德博学、强吾兴邦”的校训，铸就了“自强不息、创业创新”的办学精神，培养出了10万余名优秀人才，为区域经济和中国煤炭工业的发展做出了突出的贡献，被誉为“煤炭工业的脊梁”。</p>
+        <p>　　学校下设矿业工程学院、环境与化工学院、安全工程学院、电气与控制工程学院、电子与信息工程学院、机械工程学院、材料科学与工程学院、建筑工程学院、计算机与信息工程学院、管理学院、经济学院、人文社会科学学院、马克思主义学院、国际教育学院、理学院、研究生学院、外国语学院、体育部、工程训练与基础实验中心、继续教育学院（鸡西校区）、嵩山校区共21个教学单位；学校有工学、管理学、理学、文学、经济学、法学等六个学科门类，54个本科专业</p>
+        <p>　　学校有专任教师1519人，其中具有高级专业技术职务的教师800人，硕士以上学历教师达72.7%。全国优秀教师、省模范教师、省优秀教师15人，省教学名师、教学新秀7人。省重点学科（专业）带头人梯队8个。国家级教学团队1个，省级教学团队4个。享受国务院和省政府特殊津贴专家15人。特聘中国工程院院士、中国科学院院士、长江学者15人，聘请教育界、企业界、政界知名人士等150余人为兼职教授。长期聘用企业工程技术骨干200余人为“双师型”教师，直接服务特色人才培养。[1] </p>
+        <p>　　国家级教学团队（1个）：电气工程实践教学团队（付家才）[2] </p>
+        <p>　　省级教学团队（4个）：电气工程实践教学团队（付家才）、会计学专业教学团队（谭旭红）、矿物加工教学团队（吕一波）、矿山机械系列课教学团队（刘春生）[3-4]&nbsp;&nbsp; </p>
+        <p>　　教学建设</p>
+        <p>　　据学校官网2014年9月信息显示，学校有4个国家特色专业建设点、10个省重点专业，建成1门国家级精品课、省级精品课14门，1个国家级教学团队、4个省级教学团队，1个省级人才培养模式创新示范区，4个省级实验教学示范中心，2个振兴东北老工业基地人才培训中心、1个国家煤矿安全培训基地。</p>
+        <p>　　国家级特色专业（4个）：采矿工程、矿物加工工程、电气工程及其自动化、机械设计制造及其自动化[5] </p>
+        <p>　　省重点专业（10个）：采矿工程、矿物加工工程、自动化、机械设计制造及其自动化、会计学、土木工程、电气工程及其自动化、安全工程、金属材料工程、数学与应用数学[5] </p>
+        <p>　　省级实验教学示范中心（4个）：电气工程实验与实践中心、机械实践中心、基础实验中心、矿业工程实训实验中心.</p>
+        <p>&nbsp;</p>
+    </div></div></div></div></td><td class="area-right-3" style="padding:0px;width:300px;vertical-align:top;"><div class="area-right-help"><div style="padding:10px;padding-top:0px;"><div class="content-bar"></div><font class="title">使用指南</font><div class="clear"></div><table class="sys" cellspadding="0" style="width:280px;display:block;" cellspacing="0" border="0"><col width="220"><col width="30"><tbody><tr><td><a class="t" href="HelpDetail.aspx?RefID=88" target="_blank">关于课程网站中视频无法播放的解决办法</a></td><td style="text-align:right;"><font>925</font></td></tr><tr><td><a class="t" href="HelpDetail.aspx?RefID=87" target="_blank">课程中心3.0进阶式学习</a></td><td style="text-align:right;"><font>860</font></td></tr><tr><td><a class="t" href="HelpDetail.aspx?RefID=86" target="_blank">网页编辑器控件下载</a></td><td style="text-align:right;"><font>200</font></td></tr><tr><td><a class="t" href="HelpDetail.aspx?RefID=85" target="_blank">如何在课程中心里添加课程录像</a></td><td style="text-align:right;"><font>231</font></td></tr><tr><td><a class="t" href="HelpDetail.aspx?RefID=84" target="_blank">课程中心3.0教师使用手册</a></td><td style="text-align:right;"><font>382</font></td></tr><tr><td><a class="t" href="HelpDetail.aspx?RefID=83" target="_blank">课程中心3.0学生使用手册</a></td><td style="text-align:right;"><font>1566</font></td></tr><tr><td><a class="t" href="HelpDetail.aspx?RefID=82" target="_blank">如何将PPT转化成flash?</a></td><td style="text-align:right;"><font>191</font></td></tr><tr><td><a class="t" href="HelpDetail.aspx?RefID=81" target="_blank">课程中心编辑框插件无法安装的解决方法</a></td><td style="text-align:right;"><font>170</font></td></tr></tbody></table><a class="more" href="Help.aspx" target="_blank">...更多</a></div></div></td></tr></tbody></table></div><input type="hidden" id="hideImportNews" value=""><div class="center copy-right" style="background:none;position:relative;"><div style="padding:5px 0px;"><img style="position:relative; top:3px;" src="css/blue/logo_s.png"><span style="margin-left:8px;">
+					Copyright © Able-elec.Co.Ltd.,All Right Reserved.
+					<font class="bottom-line">|</font>
+					客服：800-820-3579
+					<font class="bottom-line">|</font>
+					支持邮箱：<a href="mailto:ccservice@able-elec.com" class="underline">ccservice@able-elec.com</a></span></div></div><script type="text/javascript" src="js/md5.js"></script><script type="text/javascript">
+    //
+    //上海中医药大学 统一身份认证----
+    function SHZYYDXTYSFRZ()
+    {
+
+        //ajax.post({
+        // url:"Login.ashx?action=UnityLogin",
+        // data:(new Date).toString("o"),
+        // success:function(str){
+        //    if(str=="True")
+        //   {
+        //    window.location.reload(true);
+        //   }
+        // },
+        //  error:function(msg,xhr){
+        //    alert(msg.responseText);
+        //  window.location.reload(true);
+
+        // }
+        // });
+        //	window.location='SSO.aspx'
+        window.location.reload("SSO.aspx");
+        // document.getElementById("<%=btnSSO.ClientID %>");
+        // alert(document.getElementById("<%=btnSSO.ClientID %>"));
+    };
+    //----------------------------------
+    function $(id)
+    {
+        return id.nodeType?id:document.getElementById(id);
+    };
+    uri = function(u) {
+        this.url = u || window.location.href;
+        this.url = this.url.replace(/#.*$/, "");
+    };
+    uri.prototype = {
+        get: function(key) {
+            var c_start = this.url.indexOf(key + "=");
+            if (c_start != -1) {
+                c_start = c_start + key.length + 1;
+                var c_end = this.url.indexOf("&", c_start);
+                if (c_end == -1) c_end = this.url.length;
+                var value = this.url.substring(c_start, c_end);
+                return value;
+            }
+            return "";
+        },
+        set: function(key, value) {
+            var c_start = this.url.indexOf(key + "=");
+            if (c_start == -1) {
+                if (this.url.indexOf("?") == -1) {
+                    this.url += "?" + key + "=" + value;
+                }
+                else
+                {
+                    this.url += "&" + key + "=" + value;
+                }
+            }
+            else {
+                var v = this.get(key);
+                this.url = this.url.replace(key + "=" + v, key + "=" + value);
+            }
+        },
+        toString:function(){
+            return this.url;
+        }
+    };
+
+    uri.format = function(link, url)
+    {
+        var st;
+        url = url || window.location.toString();
+        if(link.indexOf("http://")==-1&&link.indexOf("https://")==-1)
+        {
+            url = url.substring(0, url.lastIndexOf("/"));
+            st = link.indexOf("../");
+            while(st != -1)
+            {
+                link = link.substring(st+3);
+                url = url.substring(0, url.lastIndexOf("/"));
+                st = link.indexOf("../");
+            };
+
+            link = url+"/"+link;
+        }
+        return link;
+    }
+
+    ajax = {
+        type: {
+            xml: "application/xml, text/xml",
+            html: "text/html",
+            script: "text/javascript, application/javascript",
+            json: "application/json",
+            text: "text/plain"
+        },
+        get: function(o) {
+            o.data = null;
+            o.type = "get";
+            this.send(o);
+        },
+        post: function(o) {
+            o.type = "post";
+            this.send(o);
+        },
+        send: function(o) {
+            var oxhr, wc=this;
+            if(!!o.cache&&wc._cache[o.url] != undefined){
+                return wc._cache[o.url];
+            }
+            oxhr = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
+            if (!oxhr || !o.url) return;
+            oxhr.open(o.type, o.url, o.asyn || true);
+            oxhr.setRequestHeader("Accept", (o.accept || "text/html") + ", */*");
+            oxhr.setRequestHeader("Content-type", (o.header || "application/x-www-form-urlencoded") + ";charset=" + (o.encoding || "utf-8"));
+
+            oxhr.onreadystatechange = function() {
+                if (oxhr.readyState == 4) {
+                    if (oxhr.status >= 200 && oxhr.status <= 302) {
+                        o.success(oxhr.responseText, oxhr);
+                        if(!!o.cache){
+                            wc._cache[o.url] = oxhr.responseText;
+                        }
+                    }
+                    else {
+                        if (o.error) o.error(oxhr.responseText, oxhr);
+                    }
+                }
+            }
+            oxhr.send(o.data || null);
+        }
+    };
+    function encode(html) {
+        var temp = document.createElement ("div");
+        (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+        var output = temp.innerHTML;
+        temp = undefined;
+        return output;
+    };
+    function decode(text) {
+        var temp = document.createElement("div");
+        temp.innerHTML = text;
+        var output = temp.innerText || temp.textContent;
+        temp = undefined;
+        return output;
+    };
+    function mOver(node){
+        if(node.className.indexOf("hover")==-1){
+            node.className += " hover";
+        }
+    };
+    function mOut(node){
+        node.className = node.className.replace(" hover","").replace("hover", "");
+    };
+    function setDefault(node){
+        if(/^\s*$/.test(node.value)){
+            node.value = node.defaultValue;
+        }
+    };
+    function clearDefault(node){
+        if(node.value==node.defaultValue){
+            node.value = "";
+        }
+    };
+    function tab(node,fn){
+        var childs,cs;
+        if(node.className.indexOf("cur") != -1)
+            return;
+        childs = node.parentNode.childNodes;
+        for(var i=0;i< childs.length;i++)
+        {
+            if(childs[i].className.indexOf("cur") != -1)
+            {
+                cs = childs[i].className;
+                childs[i].className = node.className;
+                node.className = cs;
+                if(fn) fn(node,childs[i]);
+                return;
+            }
+        }
+    };
+
+    function favority()
+    {
+        var body = document.body,
+            url=window.location.toString(),
+            title="课程中心";
+        url = url.substring(0, url.lastIndexOf("/")) +"/index.aspx";
+        //body.style.behavior='url(#default#homepage)';
+        //body.setHomePage(url+"/index.aspx")
+        if (window.sidebar) {
+            window.sidebar.addPanel(title, url,"");
+        } else if( window.external ) {
+            try
+            {
+                window.external.addFavorite(url, title);
+            }
+            catch (e1)
+            {
+                try
+                {
+                    window.external.addToFavoritesBar(url, title);
+                }
+                catch (e2)
+                {
+                    alert('加入收藏失败，请您手工加入。')
+                }
+            }
+
+        } else if( window.opera && window.print ) {
+            return true;
+        }
+    }
+    function skin(node,color)
+    {
+        if(node.className.indexOf('cur') != -1)
+            return;
+        tab(node);
+        document.cookie = "skin="+color;
+        window.location.reload();
+    };
+    function searchChange(node){
+        node.parentNode.action = node.options[node.selectedIndex].value;
+    };
+    function page2(num)
+    {
+        if(num.nodeType)
+            num = num.options[num.selectedIndex].value;
+        if(!window.u1) window.u1 = new uri();
+        u1.set("page",num);
+        window.location.href = u1.toString();
+    };
+
+    function sh2(node)
+    {
+        var fr = $(atr(node,"for"));
+        if(fr)
+        {
+            if(fr.style.display != "none")
+            {
+                _hidden(fr);
+                node.innerHTML = "展开";
+            }
+            else
+            {
+                _show(fr);
+                node.innerHTML = "收缩";
+            }
+        }
+    };
+
+    function order(node)
+    {
+        if(!window.u2) window.u2 = new uri();
+        u2.set("order", node.options[node.selectedIndex].value);
+        window.location = u2.toString();
+    };
+    function sort(node)
+    {
+        if(!window.u2) window.u2 = new uri();
+        u2.set("sort", node.options[node.selectedIndex].value);
+        window.location = u2.toString();
+    };
+    function unityLogin()
+    {
+        window.location='CA.aspx'
+    };
+    function login(node)
+    {   alert('1');
+        var IsHuDa=0; <!--是否湖大：1 是，0 否   当SHA1Encrypt等于1时IsHuDa=0 标准版加密当SHA1Encrypt等于1时IsHuDa=1 湖大加密 -->
+        var pNode = node.parentNode,
+            data = "",
+            nodes= pNode.getElementsByTagName("input"),
+            name;
+        for(var i=0,len=nodes.length;i<len;i++){
+            alert(nodes.length);
+            node = nodes[i];
+            name = atr(node,"name");
+            if(!!name)
+            {
+
+                if(name=="Password")
+                {
+                    if(IsHuDa==1)
+                    {
+                        data +=  name +"="+node.value+"&";
+                    }
+                    else
+                    {
+                        data +=  name +"="+hex_md5(node.value)+"&";
+                    }
+                }
+                else
+                {
+                    data +=  name +"="+escape(node.value)+"&";
+                }
+            }
+            var $url = "Login.ashx?"+data+"&action=GetUserLoginInfo";
+            alert($url);
+            alert((new Date).toString());
+        }
+
+        ajax.post({
+            url:"Login.ashx?"+data+"&action=GetUserLoginInfo",
+            data:(new Date).toString(),
+            success:function(data){
+
+                if(data=="")
+                {
+
+                    window.location.reload(true);
+                }
+                else
+                {
+                    window.location.href=data;
+                }
+            },
+            error:function(msg,xhr){
+                if(xhr.status == 403)
+                    alert("用户或密码错误！");
+                else
+                    alert("发生错误！"+msg);
+            }
+        });
+        return false;
+    };
+    function refash()
+    {
+        window.location = window.location;
+    }
+    function unityLogout()
+    {
+        ajax.post({
+            url:"Logout.ashx?action=UnityLogout",
+            data:(new Date).toString(),
+            success:function(){
+                window.location.reload(true);
+            },
+            error:function(){
+                window.location.reload(true);
+            }
+        });
+        window.location.reload(true);
+    }
+    function logout()
+    {
+        ajax.post({
+            url:"Logout.ashx?action=OutUserLoginInfo",
+            data:(new Date).toString(),
+            success:function(str){
+                if(str=="")
+                {
+                    window.location.reload(true);
+                }
+                else
+                {
+                    if(str=="SSO")
+                    {
+                        window.location.reload("SSOLogout.aspx");
+                    }
+                    else
+                    {
+                        window.location.href=str;
+                    }
+                }
+            },
+            error:function(){
+                window.location.reload(true);
+
+            }
+        });
+    };
+    function _show(node)
+    {
+        if(node.selector)
+        {
+            document.getElementById(node.selector).style.display = "";
+            document.getElementById(node.selector).style.visibility = "visible";
+        }
+        else
+        {
+            node.style.display = "";
+            node.style.visibility = "visible";
+        }
+    };
+    function _hidden(node)
+    {
+        if(node.selector)
+        {
+            document.getElementById(node.selector).style.display = "none";
+            document.getElementById(node.selector).style.visibility = "hidden";
+        }
+        else
+        {
+            node.style.display = "none";
+            node.style.visibility = "hidden";
+        }
+    };
+    function show2(node,render)
+    {
+        if(node._interval)
+        {
+            clearTimeout(node._interval);
+            node._interval = undefined;
+        }
+        if(render)
+            render(node)
+        else
+            _show(node);
+    };
+    function hidden2(node,render)
+    {
+        if(!node._interval){
+            node._interval = setTimeout(function(){
+                if(render)
+                    render(node);
+                else
+                    _hidden(node);
+                clearTimeout(node._interval);
+                node._interval = undefined;
+            },atr(node,"_timeout") || 100);
+        }
+    };
+    function atr(node,ar)
+    {
+        return node[ar] || node.getAttribute(ar);
+    };
+    function GetLanguage(str)
+    {
+        var data="&Language="+str;
+        ajax.post({
+            url:"Login.ashx?action=GetLanguage"+data,
+            data:(new Date).toString(),
+            success:function(){
+                window.location.reload(true);
+            },
+            error:function(){
+                alert("切换语言失败");
+            }
+        });
+    };
+    //
+</script><script type="text/javascript">
+    //
+    function ff2html(id){
+        var el = $(id);
+        el.innerHTML = decode(el.innerHTML);
+    }
+    //
+</script><script type="text/javascript">
+    //
+    function sh(node, preNode)
+    {
+        _hidden($(preNode["for"] || preNode.getAttribute("for")));
+        _show($( node["for"] || node.getAttribute("for")));
+    };
+
+    function share2(node)
+    {
+        var pt = node.parentNode,
+            link = atr(pt,'_link'),
+            title = encodeURIComponent(atr(pt,'_title')),
+            source = encodeURIComponent(atr(pt,'_source')),
+            site = encodeURIComponent(atr(pt,'_site'));
+        link = encodeURIComponent(uri.format(link));
+
+        window.open(atr(node,"_href")
+            .replace('(link)',link)
+            .replace('(link)',link)
+            .replace('(title)',title)
+            .replace('(source)',source)
+            .replace('(site)',site));
+        return false;
+    };
+    function mail2(node)
+    {
+        var pt = node.parentNode,
+            link = atr(pt,'_link'),
+            title = encodeURIComponent(atr(pt,'_title')),
+            source = encodeURIComponent(atr(pt,'_source')),
+            site = encodeURIComponent(atr(pt,'_site'));
+        link = encodeURIComponent(uri.format(link));
+
+        window.location = "mailto:?Subject= &amp;Body="+link;
+    };
+    var isExistImportNews=document.getElementById("hideImportNews")
+    function InitNews()
+    {
+        if(isExistImportNews.value==1)
+        {
+            document.getElementById("divImportNews").style.display="block";
+        }
+        else
+        {
+            document.getElementById("divImportNews").style.display="none";
+        }
+    }
+    function Test1(){
+        if(window.ff2html)
+        {
+            ff2html("SchoolBrief");
+        }
+
+    }
+
+    function GetIdentityLoginOutURL()
+    {
+        ajax.post({
+            url:"IdentityLogin/LoginOut.ashx?action=GetLoginOutUrl",async:false,cache:false,
+            success:function(data){
+                if(data!="")
+                {
+                    if(document.getElementById("IdentityOut"))
+                    {
+                        document.getElementById("IdentityOut").href=data;
+                    }
+                }
+            }
+        });
+    };
+
+
+    window.onload =function(){
+        <!--GetIdentityLoginOutURL();-->
+        Test1();
+        InitNews();
+    }
+    //
+</script></body></html>
